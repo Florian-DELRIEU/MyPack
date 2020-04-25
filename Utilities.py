@@ -5,7 +5,7 @@ import numpy as np
 
 def truncSignificatif(num,nbSignificatif):
     """
-    Tronque  :num: jusqu'a :decimal:
+    Tronque  :num: et ne garde que :nbSignificatif: chiffres significatifs
     :param num: float a tronquer
     :param nbSignificatif: Nombre de chiffre significatif a garder
     :return:
