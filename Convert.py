@@ -248,14 +248,14 @@ def SaveInCSV(VarName,DataFileName,Key):
     Dict2CSV(DATA,DataFileName)
     
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
-'''
-def List2File(List,DataFileName):
+def getFromDict(Dico,KeyList):
     """
-    Write the list contains into a Datafile
+    Creer un nouveau dictionnaire possedant une partie des :keys: de l'ancien
+    param :Dico: Dictionnaire à copier en partie
+    param :KeyList: Liste des :keys: à copier dans :Dico:
     """
-    List = list(List)
-    file = open(DataFileName,"w")
-
-    for el in List:
-        file.write(el + "\n")
-'''
+    newDico = dict()
+    for thisKey in KeyList:
+        if thisKey in Dico.keys(): newDico[thisKey] = Dico[thisKey]
+        else                     : print(str(thisKey) + "is not in the :dict:")
+    return newDico
