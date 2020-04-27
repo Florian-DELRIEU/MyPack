@@ -246,16 +246,3 @@ def SaveInCSV(VarName,DataFileName,Key):
         DATA[Key].append(VarName)
 
     Dict2CSV(DATA,DataFileName)
-    
-#-----------------------------------------------------------------------------------------------------------------------------------------------------------
-def getFromDict(Dico,KeyList):
-    """
-    Creer un nouveau dictionnaire possedant une partie des :keys: de l'ancien
-    param :Dico: Dictionnaire à copier en partie
-    param :KeyList: Liste des :keys: à copier dans :Dico:
-    """
-    newDico = dict()
-    for thisKey in KeyList:
-        if thisKey in Dico.keys(): newDico[thisKey] = Dico[thisKey]
-        else                     : print(str(thisKey) + "is not in the :dict:")
-    return newDico
