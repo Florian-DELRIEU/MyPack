@@ -66,7 +66,7 @@ def getFromDict(Dico,KeyList,Log=False):
             if Log: print(str(thisKey) + " not found !")
     return newDico
 
-def inRoman(number):
+def int2rom(number):
     """
     Renvoie la traduction d'un chiffre arabe en chiffre romains.
         -> Le programme ne peut pas traduire des chiffres au dela de 3999 car il est necéssaire d'avoir le signe pour
