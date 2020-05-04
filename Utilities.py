@@ -66,7 +66,7 @@ def getFromDict(Dico,KeyList,Log=False):
             if Log: print(str(thisKey) + " not found !")
     return newDico
 
-def int2rom(number):
+def int2rom(number=int()):
     """
     Renvoie la traduction d'un chiffre arabe en chiffre romains.
         -> Le programme ne peut pas traduire des chiffres au dela de 3999 car il est necéssaire d'avoir le signe pour
@@ -106,3 +106,51 @@ def int2rom(number):
     if "VIIII" in roman: roman = roman.replace("VIIII","IX")
     if "IIII" in roman: roman = roman.replace("IIII","IV")
     return roman
+
+def rom2int(roman=str()):
+    number = 0
+    assert type(roman) is str , "roman must be a string"
+    for l in roman:
+        if l not in ["I","V","X","L","C","D","M"]:
+            assert False , "roman must be composed by I,V,X,L,C,D,M signs only"
+    while roman is not "":
+        if "M" in roman:
+            number += 1000
+            roman = roman.replace("M","",1)
+        elif "CM" in roman:
+            number += 900
+            roman = roman.replace("CM","",1)
+        elif "CD" in roman:
+            number += 400
+            roman = roman.replace("CD","",1)
+        elif "XC" in roman:
+            number += 90
+            roman = roman.replace("XC","",1)
+        elif "XL" in roman:
+            number += 40
+            roman = roman.replace("XL","",1)
+        elif "IX" in roman:
+            number += 9
+            roman = roman.replace("IX","",1)
+        elif "IV" in roman:
+            number += 4
+            roman = roman.replace("IV","",1)
+        elif "D" in roman:
+            number += 500
+            roman = roman.replace("D","",1)
+        elif "C" in roman:
+            number += 100
+            roman = roman.replace("C","",1)
+        elif "L" in roman:
+            number += 50
+            roman = roman.replace("L","",1)
+        elif "X" in roman:
+            number += 10
+            roman = roman.replace("X","",1)
+        elif "V" in roman:
+            number += 5
+            roman = roman.replace("V","",1)
+        elif "I" in roman:
+            number += 1
+            roman = roman.replace("I","",1)
+    return number
