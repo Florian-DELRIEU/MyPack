@@ -108,6 +108,12 @@ def int2rom(number=int()):
     return roman
 
 def rom2int(roman=str()):
+    """
+    Renvoie la traduction d'un chiffre romain en chiffre arabe
+        -> Le programme ne peut pas traduire des chiffres au dela de 3999 car il est necéssaire d'avoir le signe pour
+        5000 et au delà en chiffre romain. Je n'ai pas trouvé comment faire ce signe
+    :param roman: Chiffre romain a traduire (I,V,X,L,C,D,M seulement)
+    """
     number = 0
     assert type(roman) is str , "roman must be a string"
     for l in roman:
