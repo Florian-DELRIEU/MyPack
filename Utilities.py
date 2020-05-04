@@ -110,15 +110,22 @@ def int2rom(number=int()):
 def rom2int(roman=str()):
     """
     Renvoie la traduction d'un chiffre romain en chiffre arabe
-        -> Le programme ne peut pas traduire des chiffres au dela de 3999 car il est necéssaire d'avoir le signe pour
-        5000 et au delà en chiffre romain. Je n'ai pas trouvé comment faire ce signe
+        ->  Le programme ne peut pas traduire des chiffres au dela de 3999 car il est necéssaire d'avoir le signe pour
+            5000 et au delà en chiffre romain. Je n'ai pas trouvé comment faire ce signe
+        ->  :ErrorList: doit être complété par l'ensemble des erreurs d'écriture des chiffres romains
     :param roman: Chiffre romain a traduire (I,V,X,L,C,D,M seulement)
     """
     number = 0
+    ErrorList = ["IL","IC","ID","IM",  # Liste des erreures d'ecritures
+                 "VL","VC","VD","VM",
+                 "XD","XM",
+                 "LM"]
     assert type(roman) is str , "roman must be a string"
     for l in roman:
-        if l not in ["I","V","X","L","C","D","M"]:
-            assert False , "roman must be composed by I,V,X,L,C,D,M signs only"
+        if l not in ["I","V","X","L","C","D","M"]:  assert False , "roman must be composed by I,V,X,L,C,D,M signs only"
+    for el in ErrorList:
+        if roman.find(el) is not -1:                assert False, "Error roman number badly written"
+
     while roman is not "":
         if "M" in roman:
             number += 1000
