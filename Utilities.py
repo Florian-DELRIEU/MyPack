@@ -65,3 +65,44 @@ def getFromDict(Dico,KeyList,Log=False):
         else:
             if Log: print(str(thisKey) + " not found !")
     return newDico
+
+def inRoman(number):
+    """
+    Renvoie la traduction d'un chiffre arabe en chiffre romains.
+        -> Le programme ne peut pas traduire des chiffres au dela de 3999 car il est necéssaire d'avoir le signe pour
+        5000 et au delà en chiffre romain. Je n'ai pas trouvé comment faire ce signe
+    :param number: Entier entre 0 et 3999
+    """
+    roman= str()
+    assert type(number) is int and number > 0 , "Must be an integer greater than 0"
+    assert number < 4000 , "This program can't translate number over 3999 now. Need the roman sign for 5000"
+    while number is not 0:
+        if number//1000 is not 0:
+            roman += "M"
+            number -= 1000
+        elif number//500 is not 0:
+            roman += "D"
+            number -= 500
+        elif number//100 is not 0:
+            roman += "C"
+            number -= 100
+        elif number//50 is not 0:
+            roman += "L"
+            number -= 50
+        elif number//10 is not 0:
+            roman += "X"
+            number -= 10
+        elif number//5 is not 0:
+            roman += "V"
+            number -= 5
+        elif number//1 is not 0:
+            roman += "I"
+            number -= 1
+        else:  number = 0
+    if "DCCCC" in roman: roman = roman.replace("DCCCC","CM")
+    if "CCCC" in roman: roman = roman.replace("CCCC","CD")
+    if "LXXXX" in roman: roman = roman.replace("LXXXX","XC")
+    if "XXXX" in roman: roman = roman.replace("XXXX","XL")
+    if "VIIII" in roman: roman = roman.replace("VIIII","IX")
+    if "IIII" in roman: roman = roman.replace("IIII","IV")
+    return roman
