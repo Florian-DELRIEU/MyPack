@@ -127,7 +127,10 @@ def rom2int(roman=str()):
         if roman.find(el) is not -1:                assert False, "Error roman number badly written"
 
     while roman is not "":
-        if "CM" in roman:
+        if "M" in roman:
+            number += 1000
+            roman = roman.replace("M","",1)
+        elif "CM" in roman:
             number += 900
             roman = roman.replace("CM","",1)
         elif "CD" in roman:
@@ -145,9 +148,6 @@ def rom2int(roman=str()):
         elif "IV" in roman:
             number += 4
             roman = roman.replace("IV","",1)
-        elif "M" in roman:
-            number += 1000
-            roman = roman.replace("M","",1)
         elif "D" in roman:
             number += 500
             roman = roman.replace("D","",1)
@@ -167,5 +167,3 @@ def rom2int(roman=str()):
             number += 1
             roman = roman.replace("I","",1)
     return number
-
-rom2int("CM")
