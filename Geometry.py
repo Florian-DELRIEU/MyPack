@@ -11,8 +11,3 @@ def Circle(Center=tuple(),Radius=float(),LineStyle="-"):
     x_cercle = x_centre + Radius*np.cos(theta)
     y_cercle = y_centre + Radius*np.sin(theta)
     plt.plot(x_cercle,y_cercle,LineStyle)
-
-import matplotlib.pyplot as plt
-plt.figure()
-Circle((0,0),2)
-plt.show()
