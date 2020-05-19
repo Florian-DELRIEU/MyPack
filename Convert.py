@@ -227,20 +227,18 @@ def SaveInCSV(VarName,DataFileName,Key):
     """
     file = open(DataFileName,"a")
 
-    try:
-        DATA = Csv2Dict(DataFileName)
-    except:
-        DATA = dict()
+    try:    DATA = Csv2Dict(DataFileName)  # Verifie si csv existe
+    except: DATA = dict()  # sinon le cree
 
-    if Key in DATA.keys():
+    if Key in DATA.keys():  # si :key: existe dans le CSV
         i=0
         while i < len(DATA[Key]):
             el = DATA[Key][i]
-            if el == "": 
+            if el == "":  # Verifie si un case de la liste de :Data[key]: est vide
                 DATA[Key].remove(el)
                 i-=1
             i+=1
-        DATA[Key].append(VarName)
+        DATA[Key].append(VarName)  # Ajoute valeur a save
     else:
         DATA[Key] = list()
         DATA[Key].append(VarName)
