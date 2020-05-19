@@ -230,17 +230,18 @@ def SaveInCSV(VarName,DataFileName,Key):
     try:    DATA = Csv2Dict(DataFileName)  # Verifie si csv existe
     except: DATA = dict()  # sinon le cree
 
-    if Key in DATA.keys():  # si :key: existe dans le CSV
-        i=0
-        while i < len(DATA[Key]):
-            el = DATA[Key][i]
-            if el == "":  # Verifie si un case de la liste de :Data[key]: est vide
-                DATA[Key].remove(el)
-                i-=1
-            i+=1
-        DATA[Key].append(VarName)  # Ajoute valeur a save
-    else:
-        DATA[Key] = list()
-        DATA[Key].append(VarName)
+    for current_value in VarName:  # Sauvegarde tout les élement de :VarName:
+        if Key in DATA.keys():  # si :key: existe dans le CSV
+            i=0
+            while i < len(DATA[Key]):
+                el = DATA[Key][i]
+                if el == "":  # Verifie si un case de la liste de :Data[key]: est vide
+                    DATA[Key].remove(el)
+                    i-=1
+                i+=1
+            DATA[Key].append(current_value)  # Ajoute valeur a save
+        else:
+            DATA[Key] = list()
+            DATA[Key].append(current_value)
 
     Dict2CSV(DATA,DataFileName)
