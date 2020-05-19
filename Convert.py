@@ -223,7 +223,10 @@ def SaveInFile(VarName,DataFileName):
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
 def SaveInCSV(VarName,DataFileName,Key):
     """
-    Add -VarName- into a CSV file to save it
+    Sauvegarde :VarName: dans un fichier .csv
+    :param VarName:  Variable a sauvegarder
+    :param DataFileName:  Nom du fichier .csv
+    :param Key:  Colonne du .csv
     """
     file = open(DataFileName,"a")
 
