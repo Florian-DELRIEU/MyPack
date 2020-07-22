@@ -33,3 +33,17 @@ def psd(x):
     """
     fftx = fft(x)
     return abs(fftx)
+
+def plot_psd(x,t=np.array([])):
+    import matplotlib.pyplot as plt
+    plt.ion()
+    if len(t)==0:   t=np.arange(len(x))
+    else:           pass
+    psdx = psd(x)
+    f = freq(x,t)
+    plt.figure()
+    plt.title("PSD of signal")
+    plt.ylabel("|fft(x)|")
+    plt.xlabel("frequency (Hz)")
+    plt.plot(f,psdx)
+    plt.grid("both")
