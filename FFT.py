@@ -9,7 +9,9 @@ def fft(x):
     :param x: array a analyser
     :return: array contenant les coefficients de fourrier
     """
-    return 2*np.fft.fft(x)[0:len(x)//2+1]
+    fftx = np.fft.fft(x)
+    fftx = 2*fftx[:len(fftx)//2+1]/len(x)
+    return fftx
 
 def freq(x,t=np.array([])):
     """
@@ -30,4 +32,4 @@ def psd(x):
     :return: array contenant les psd
     """
     fftx = fft(x)
-    return abs(fftx/len(x))
+    return abs(fftx)
