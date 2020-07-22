@@ -12,3 +12,7 @@ def freq(x,t=np.array([])):
     N = len(x)
     fs= N / t[-1] # sampling frequency
     return fs*np.arange(N/2+1)/N
+
+def psd(x):
+    fftx = fft(x)
+    return abs(fftx/len(x))
