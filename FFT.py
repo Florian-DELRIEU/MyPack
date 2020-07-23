@@ -48,21 +48,22 @@ def plot_psd(x,t=np.array([])):
     plt.plot(f,psdx)
     plt.grid("both")
 
-def get_freq(x,t):
-    psdx = psd(x)
-    f = freq(t)
-    psdx, f = np.array(psdx), np.array(f) # ensure they are array
-    freq_list = list() # frequency and amplitude list
-    psd_list = list()
-    for _ in np.arange(len(psdx)):
-        maxfreqindic = np.where(psdx == np.max(psdx))
-        freq_list.append( f[maxfreqindic] )
-        psd_list.append(psdx[maxfreqindic])
-        f[maxfreqindic] = 0
-        psdx[maxfreqindic] = 0
-    return freq_list, psd_list
+def sort_FA(x,t):
+    psd_x = psd(x)
+    freq_x = freq(x,t)
+    sorted_psd = list()
+    sorted_freq = list()
+    for _ in psd_x:
+        psdmax_indic = np.where(psd_x == np.max(psd_x))
+
 
 ## TEST
 t = np.linspace(0,10,100)
 x = np.sin(2*np.pi*t)
-a,b = get_freq(x,t)
+defaultvalue = [1,5,3,9,10,5]
+a = np.array(defaultvalue)
+for curmax in np.arange(len(a)):
+    curindic = np.where(a == np.max(a))
+    curmax = a[curindic]
+    a[curindic] = 0
+    print(curmax)
