@@ -47,3 +47,22 @@ def plot_psd(x,t=np.array([])):
     plt.xlabel("frequency (Hz)")
     plt.plot(f,psdx)
     plt.grid("both")
+
+def get_freq(x,t):
+    psdx = psd(x)
+    f = freq(t)
+    psdx, f = np.array(psdx), np.array(f) # ensure they are array
+    freq_list = list() # frequency and amplitude list
+    psd_list = list()
+    for _ in np.arange(len(psdx)):
+        maxfreqindic = np.where(psdx == np.max(psdx))
+        freq_list.append( f[maxfreqindic] )
+        psd_list.append(psdx[maxfreqindic])
+        f[maxfreqindic] = 0
+        psdx[maxfreqindic] = 0
+    return freq_list, psd_list
+
+## TEST
+t = np.linspace(0,10,100)
+x = np.sin(2*np.pi*t)
+a,b = get_freq(x,t)
