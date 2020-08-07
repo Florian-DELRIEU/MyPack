@@ -22,8 +22,8 @@ def freq(x,t=np.array([])):
     if len(t) == 0: t = np.arange(len(x))
     assert len(t) == len(x) , "x and t vectors must be in same lenght"
     N = len(x)
-    fs= N / t # sampling frequency
-    return fs*np.arange(N/2+1)/N
+    fs= N / t[-1] # sampling frequency
+    return fs*np.arange(N//2+1)/N
 
 def psd(x):
     """
