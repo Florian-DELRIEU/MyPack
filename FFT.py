@@ -55,17 +55,3 @@ def sort_FA(x,t): # Not working
     sorted_freq = list()
     for _ in psd_x:
         psdmax_indic = np.where(psd_x == np.max(psd_x))
-
-
-## TEST
-###
-t = np.linspace(0,10,100)
-x = np.sin(2*np.pi*t)
-defaultvalue = [1,5,3,9,10,5]
-a = np.array(defaultvalue)
-for curmax in np.arange(len(a)):
-    curindic = np.where(a == np.max(a))
-    curmax = a[curindic]
-    a[curindic] = 0
-    print(curmax)
-###
