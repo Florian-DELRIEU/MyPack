@@ -22,7 +22,7 @@ def freq(x,t=np.array([])):
     if len(t) == 0: t = np.arange(len(x))
     assert len(t) == len(x) , "x and t vectors must be in same lenght"
     N = len(x)
-    fs= N / t[-1] # sampling frequency
+    fs= N / t # sampling frequency
     return fs*np.arange(N/2+1)/N
 
 def psd(x):
@@ -48,7 +48,7 @@ def plot_psd(x,t=np.array([])):
     plt.plot(f,psdx)
     plt.grid("both")
 
-def sort_FA(x,t):
+def sort_FA(x,t): # Not working
     psd_x = psd(x)
     freq_x = freq(x,t)
     sorted_psd = list()
@@ -58,6 +58,7 @@ def sort_FA(x,t):
 
 
 ## TEST
+###
 t = np.linspace(0,10,100)
 x = np.sin(2*np.pi*t)
 defaultvalue = [1,5,3,9,10,5]
@@ -67,3 +68,4 @@ for curmax in np.arange(len(a)):
     curmax = a[curindic]
     a[curindic] = 0
     print(curmax)
+###
