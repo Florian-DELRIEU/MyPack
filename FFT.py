@@ -1,5 +1,5 @@
 """
-Module pour analysse spectrales
+Module pour analyse spectrales
 """
 import numpy as np
 
@@ -48,6 +48,26 @@ def plot_psd(x,t=np.array([])):
     plt.plot(f,psdx)
     plt.grid("both")
 
+def debruit(x,debruit_level):
+    FFTx = fft(x)
+    NFFT = len(FFTx)
+    ReFFTx = np.real(FFTx)
+    ImFFTx = np.imag(FFTx)
+    ReFFTxssb , ImFFTxssb = np.zeros( NFFT ) , np.zeros( NFFT )
+    for i,el in enumerate(ReFFTx):
+        if el > debruit_level: ReFFTxssb[i] = ReFFTx[i]
+    for i,el in enumerate(ImFFTx):
+        if el > debruit_level: ImFFTxssb[i] = ImFFTx[i]
+    FFTxssb = ReFFTxssb + ImFFTxssb * 1j
+    return ifft(FFTxssb,len(x))
+
+def ifft(fftx,n):
+    IFFTx = np.fft.ifft(fftx,n=n)
+    IFFTx = IFFTx*n
+    return IFFTx
+
+
+###############################################################
 def sort_FA(x,t): # Not working
     psd_x = psd(x)
     freq_x = freq(x,t)
