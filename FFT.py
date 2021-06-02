@@ -8,8 +8,10 @@ def fft(x):
     A utiliser avec :freq: (Fast fourier transform)
     :param x: array a analyser
     :return: array contenant les coefficients de fourrier
+    La taille de fftx est la même que x
+    Comme fftx est symétrique, il nous faut la coupé en deux est doublé les valeurs pour compenser 
     """
-    fftx = np.fft.fft(x)
+    fftx = np.fft.fft(x) # len(x) = len(fftx) 
     fftx = 2*fftx[:len(fftx)//2+1]/len(x)
     return fftx
 
