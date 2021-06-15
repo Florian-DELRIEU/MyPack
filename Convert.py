@@ -235,3 +235,29 @@ def SaveInCSV(VarName,DataFileName,Key):
             DATA[Key].append(current_value)
 
     Dict2CSV(DATA,DataFileName)
+
+def Extract(CSVfile,key):
+    """
+    Extrait une donné d'un CSV sans passer par un dict()
+    :param CSVfile:
+    :param key: Colonne à extraire
+    :return:
+    """
+    data = Csv2Dict(CSVfile)
+    return np.array(data[key])
+
+def Unzip(CSVfile):
+    """
+    Permet d'extraire plusieurs fichiers CSV dans une list de dict 
+    :param CSVfile:
+    :return:
+    """
+    if type(CSVfile) == list:
+        List = list()
+        for file in CSVfile:
+            List.append(Csv2Dict(file))
+        return List
+    else:
+        Dico = Csv2Dict(CSVfile)
+        return Dico
+
