@@ -13,17 +13,18 @@ def fft(x):
     fftx = 2*fftx[:len(fftx)//2+1]/len(x)
     return fftx
 
-def freq(x,t=np.array([])):
+def freq(t=np.array([]),x=np.array([])):
     """
     :param x: array a analyser
     :param t: vecteur temps
     :return: array contenant la plage de fréquence
+
+    Attention ⚠ la fonction à été modifiée dans le `commit ...` cela peut causer des erreurs pour des utilisation antérieures
     """
     if len(t) == 0: t = np.arange(len(x))
-    assert len(t) == len(x) , "x and t vectors must be in same lenght"
-    N = len(x)
-    fs= N / t[-1] # sampling frequency
-    return fs*np.arange(N//2+1)/N
+    N = len(t)
+    fs = N/t[-1]  # sampling frequency
+    return fs*np.arange(N/2 + 1)/N
 
 def psd(x):
     """
@@ -40,7 +41,7 @@ def plot_psd(x,t=np.array([])):
     if len(t)==0:   t=np.arange(len(x))
     else:           pass
     psdx = psd(x)
-    f = freq(x,t)
+    f = freq(t,x)
     plt.figure()
     plt.title("PSD of signal")
     plt.ylabel("|fft(x)|")
@@ -63,14 +64,14 @@ def debruit(x,debruit_level):
 
 def ifft(fftx,n):
     IFFTx = np.fft.ifft(fftx,n=n)
-    IFFTx = IFFTx*n
+    IFFTx = IFFTx*n/2
     return IFFTx
 
 
 ###############################################################
 def sort_FA(x,t): # Not working
     psd_x = psd(x)
-    freq_x = freq(x,t)
+    freq_x = freq(t,x)
     sorted_psd = list()
     sorted_freq = list()
     for _ in psd_x:
