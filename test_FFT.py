@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy.random as rd
 plt.ion()
 
-case = 4
+case = "test_ifft"
 
 if case == 1: ## Multi fréquence
     f1 = 1
@@ -152,3 +152,23 @@ if case == 4: ## Debruitage
     plt.xlabel("time (s)")
     plt.legend(loc="upper right")
    
+if case == "test_ifft":
+    f = 5  # frequence du signal source
+    tf = 2 # temps acquisition
+    t = np.linspace(0,tf,500)
+
+    x = np.sin(2*np.pi*f*t) # source
+
+# Transformation fft et séparation réel / imaginaire
+    FFTx = np.array(fft(x))
+    ReFFTx = np.real(FFTx)
+    ImFFTx = np.imag(FFTx)
+
+    x1 = ifft(FFTx,len(x))
+
+    plt.figure("Signal")
+    plt.clf()
+    plt.plot(t,x,"b-",label="Source")
+    plt.plot(t,x1,"r-",label="Ifft")
+    
+    plt.show()
