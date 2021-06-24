@@ -158,17 +158,32 @@ if case == "test_ifft":
     t = np.linspace(0,tf,500)
 
     x = np.sin(2*np.pi*f*t) # source
-
-# Transformation fft et séparation réel / imaginaire
-    FFTx = np.array(fft(x))
-    ReFFTx = np.real(FFTx)
-    ImFFTx = np.imag(FFTx)
+    FFTx = np.array(fft(x)) # Transformation fft
 
     x1 = ifft(FFTx,len(x))
 
+    l1 , l2 = list(FFTx[:-1]) , list(FFTx[::-1])
+    FFTx2 = np.array(l1 + l2)*len(x)/2
+    x2 = ifft(FFTx2,len(x))
+
     plt.figure("Signal")
     plt.clf()
+    plt.subplot(2,1,1)
     plt.plot(t,x,"b-",label="Source")
-    plt.plot(t,x1,"r-",label="Ifft")
-    
+    plt.plot(t,np.fft.ifft(np.fft.fft(x)),"k+",label="numpy.ifft(fft)")
+    plt.plot(t,x1,"r-",label="x1")
+    plt.plot(t,x2,"r--",label="x2")
+    plt.legend(loc="upper right")
+
+    plt.subplot(2,1,2)
+    plt.plot(psd(x),"b-",label="Source")
+    plt.plot(psd(x1),"r-",label="x1")
+    plt.plot(psd(x1),"r--",label="x2")
+    plt.legend(loc="upper right")
+
+    plt.figure(1)
+    plt.clf()
+    plt.plot(np.fft.fft(x), "b-", label="Numpy")
+    plt.plot(FFTx2, "r-", label="my fft")
+    plt.legend(loc="upper right")
     plt.show()
