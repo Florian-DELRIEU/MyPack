@@ -50,16 +50,14 @@ def plot_psd(x,t=np.array([])):
     plt.grid("both")
 
 def debruit(x,debruit_level):
-    FFTx = fft(x)
-    NFFT = len(FFTx)
+    FFTx = np.array(fft(x))
     ReFFTx = np.real(FFTx)
     ImFFTx = np.imag(FFTx)
-    ReFFTxssb , ImFFTxssb = np.zeros( NFFT ) , np.zeros( NFFT )
-    for i,el in enumerate(ReFFTx):
-        if el > debruit_level: ReFFTxssb[i] = ReFFTx[i]
-    for i,el in enumerate(ImFFTx):
-        if el > debruit_level: ImFFTxssb[i] = ImFFTx[i]
-    FFTxssb = ReFFTxssb + ImFFTxssb * 1j
+    
+    ReFFTx[ReFFTx<debruit_level] = 0
+    ImFFTx[ImFFTx<debruit_level] = 0
+    FFTxssb = ReFFTx + ImFFTx * 1j
+    
     return ifft(FFTxssb,len(x))
 
 def ifft(fftx,n):
