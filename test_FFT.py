@@ -137,7 +137,7 @@ if case == 4: ## Debruitage
     plt.legend(loc="upper right")
     
     x_ssb = ifft(FFTxssb,len(x))
-    x_ssb2 = debruit(x,debruit_level)
+    x_ssb2 = debruit(x,0.1)
     
     plt.subplot(2,1,2)
     plt.plot(freq(t),psd(x),"b-",label="PSD")
