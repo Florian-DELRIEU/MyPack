@@ -51,6 +51,7 @@ def plot_psd(x,t=np.array([])):
 
 def debruit(x,debruit_level):
 # FFT et séparation réel et imaginaire
+    debruit_level *= len(x)/2 # car fft n'est pas normé
     FFTx = np.fft.fft(x)
     ReFFTx = np.real(FFTx)
     ImFFTx = np.imag(FFTx)

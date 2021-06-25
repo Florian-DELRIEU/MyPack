@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy.random as rd
 plt.ion()
 
-case = "test_ifft"
+case = 4
 
 if case == 1: ## Multi fréquence
     f1 = 1
@@ -108,13 +108,13 @@ if case == 3: ## Influence du nombre de points sur le PSD
     plt.show()
     
 if case == 4: ## Debruitage
-    f = 5
+    f = 2
     tf = 2
     t = np.linspace(0,tf,500)
-    bruit = 0
-    debruit_level = 0.2
+    bruit = 0.5
+    debruit_level = 0.1 * len(t) # Car la fft n'est plus normé
     
-    x = np.sin(2*np.pi*f*t) + bruit*(2*rd.rand(len(t))-1)
+    x = np.sin(2*np.pi*f*t) + bruit*(2*rd.rand(len(t))-1) # source
     
     FFTx = np.array(fft(x))
     ReFFTx = np.real(FFTx)
@@ -123,8 +123,8 @@ if case == 4: ## Debruitage
     plt.figure("FFT")
     plt.clf()
     plt.subplot(2,1,1)
-    plt.plot(freq(t),ReFFTx,"b-",label="Re(FFT)")
-    plt.plot(freq(t),ImFFTx,"r-",label="Im(FFT)")
+    plt.plot(ReFFTx,"b-",label="Re(FFT)")
+    plt.plot(ImFFTx,"r-",label="Im(FFT)")
     plt.xlabel("Frequency (Hz)")
     plt.legend(loc="upper right")
     
@@ -132,11 +132,12 @@ if case == 4: ## Debruitage
     ImFFTx[abs(ImFFTx)<debruit_level] = 0
     FFTxssb = ReFFTx + ImFFTx * 1j
     
-    plt.plot(freq(t),ReFFTx,"b--+",label="Re(FFT) debruité")
-    plt.plot(freq(t),ImFFTx,"r--+",label="Im(FFT) debruité")
+    plt.plot(ReFFTx,"b--+",label="Re(FFT) debruité")
+    plt.plot(ImFFTx,"r--+",label="Im(FFT) debruité")
     plt.legend(loc="upper right")
     
     x_ssb = ifft(FFTxssb,len(x))
+    x_ssb2 = debruit(x,debruit_level)
     
     plt.subplot(2,1,2)
     plt.plot(freq(t),psd(x),"b-",label="PSD")
@@ -149,6 +150,7 @@ if case == 4: ## Debruitage
     plt.clf()
     plt.plot(t,x,"b-",label="signal")
     plt.plot(t,x_ssb,"r-",label="Debruit") ## x_ssb est 2x plus petit que le signal source mais la PSD est correcte 
+    plt.plot(t,x_ssb2,"r+",label="fonction") ## x_ssb est 2x plus petit que le signal source mais la PSD est correcte
     plt.xlabel("time (s)")
     plt.legend(loc="upper right")
    
