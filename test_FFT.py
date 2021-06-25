@@ -162,17 +162,29 @@ if case == "test_ifft":
 
     x1 = ifft(FFTx,len(x))
 
-    l1 , l2 = list(FFTx[:-1]) , list(FFTx[::-1])
-    FFTx2 = np.array(l1 + l2)*len(x)/2
-    x2 = ifft(FFTx2,len(x))
-    x3 = np.fft.ifft(FFTx2,len(x))
-
     plt.figure("Signal")
     plt.clf()
     plt.subplot(2, 1, 1)
-    plt.title("FFT")
-    plt.plot(np.fft.fft(x), "b+", label="Numpy")
-    plt.plot(FFTx2, "r-", label="my fft")
+    plt.title("Re(FFT)")
+    plt.plot(np.real(np.fft.fft(x)), "b+", label="Numpy")
+    plt.plot(np.real(FFTx), "r-", label="my fft")
+    plt.legend(loc="upper right")
+    plt.grid("both")
+
+    plt.subplot(2, 1, 2)
+    plt.title("Im(FFT)")
+    plt.plot(np.imag(np.fft.fft(x)), "b+", label="Numpy")
+    plt.plot(np.imag(FFTx), "r-", label="my fft")
+    plt.legend(loc="upper right")
+    plt.grid("both")
+
+
+    plt.figure(1)
+    plt.clf()
+    plt.subplot(2,1,1)
+    plt.plot(t, x, "b-", label="Source")
+    plt.plot(t, np.fft.ifft(np.fft.fft(x)), "k+", label="numpy.ifft(fft)")
+    plt.plot(t, x1, "r-", label="x1")
     plt.legend(loc="upper right")
     plt.grid("both")
 
@@ -180,18 +192,6 @@ if case == "test_ifft":
     plt.title("PSD")
     plt.plot(psd(x),"b-",label="Source")
     plt.plot(psd(x1),"r-",label="x1")
-    plt.plot(psd(x1),"r--",label="x2")
     plt.legend(loc="upper right")
     plt.grid("both")
-
-    plt.figure(1)
-    plt.clf()
-    plt.plot(t, x, "b-", label="Source")
-    plt.plot(t, np.fft.ifft(np.fft.fft(x)), "k+", label="numpy.ifft(fft)")
-    plt.plot(t, x1, "r-", label="x1")
-    plt.plot(t, x2, "r--", label="x2")
-    plt.plot(t, x3, "r+", label="x3")
-    plt.legend(loc="upper right")
-    plt.grid("both")
-
     plt.show()
