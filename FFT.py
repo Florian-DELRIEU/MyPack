@@ -10,7 +10,6 @@ def fft(x):
     :return: array contenant les coefficients de fourrier
     """
     fftx = np.fft.fft(x)
-    fftx = 2*fftx[:len(fftx)//2+1]/len(x)
     return fftx
 
 def freq(t=np.array([]),x=np.array([])):
@@ -32,7 +31,8 @@ def psd(x):
     :param x: array a analyser
     :return: array contenant les psd
     """
-    fftx = fft(x)
+    fftx = np.fft.fft(x)
+    fftx = 2*fftx[:len(fftx)//2 + 1]/len(x)
     return abs(fftx)
 
 def plot_psd(x,t=np.array([])):
@@ -50,19 +50,20 @@ def plot_psd(x,t=np.array([])):
     plt.grid("both")
 
 def debruit(x,debruit_level):
-    FFTx = np.array(fft(x))
+# FFT et séparation réel et imaginaire
+    debruit_level *= len(x)/2 # car fft n'est pas normé
+    FFTx = np.fft.fft(x)
     ReFFTx = np.real(FFTx)
     ImFFTx = np.imag(FFTx)
-    
-    ReFFTx[ReFFTx<debruit_level] = 0
-    ImFFTx[ImFFTx<debruit_level] = 0
+# Debruitage et reconstitution
+    ReFFTx[abs(ReFFTx)<debruit_level] = 0
+    ImFFTx[abs(ImFFTx)<debruit_level] = 0
     FFTxssb = ReFFTx + ImFFTx * 1j
     
     return ifft(FFTxssb,len(x))
 
 def ifft(fftx,n):
     IFFTx = np.fft.ifft(fftx,n=n)
-    IFFTx = IFFTx*n/2
     return IFFTx
 
 
