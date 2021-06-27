@@ -14,8 +14,8 @@ def fft(x):
 
 def freq(t=np.array([]),x=np.array([])):
     """
-    :param x: array a analyser
     :param t: vecteur temps
+    :param x: array a analyser (optionnel)
     :return: array contenant la plage de fréquence
 
     Attention ⚠ la fonction à été modifiée dans le `commit ...` cela peut causer des erreurs pour des utilisation antérieures
@@ -36,6 +36,12 @@ def psd(x):
     return abs(fftx)
 
 def plot_psd(x,t=np.array([])):
+    """
+    Affiche directement la PSD du signal dans une fenêtre prédéfinie
+    :param x: signal
+    :param t: vecteur temps (optionnnel)
+    :return: figure avec la PSD du signal
+    """
     import matplotlib.pyplot as plt
     plt.ion()
     if len(t)==0:   t=np.arange(len(x))
@@ -50,6 +56,12 @@ def plot_psd(x,t=np.array([])):
     plt.grid("both")
 
 def debruit(x,debruit_level):
+    """
+    Débruite le signal :x:
+    :param x: signal a débruiter
+    :param debruit_level: puissance du bruit à filtrer
+    :return:
+    """
 # FFT et séparation réel et imaginaire
     debruit_level *= len(x)/2 # car fft n'est pas normé
     FFTx = np.fft.fft(x)
@@ -59,10 +71,14 @@ def debruit(x,debruit_level):
     ReFFTx[abs(ReFFTx)<debruit_level] = 0
     ImFFTx[abs(ImFFTx)<debruit_level] = 0
     FFTxssb = ReFFTx + ImFFTx * 1j
-    
     return ifft(FFTxssb,len(x))
 
 def ifft(fftx,n):
+    """
+    Reconstitue un signal depuis une FFT
+    :param fftx:
+    :param n: longeueur du signal voulue
+    """
     IFFTx = np.fft.ifft(fftx,n=n)
     return IFFTx
 
