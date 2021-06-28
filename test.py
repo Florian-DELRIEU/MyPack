@@ -1,7 +1,7 @@
 from MyPack.Math import *
 import matplotlib.pyplot as plt
 
-x = np.linspace(0,10,11)
+x = np.linspace(0,54,3)
 y = x
 
 dx = dx(x)

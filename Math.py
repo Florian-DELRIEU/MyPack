@@ -25,3 +25,14 @@ def dydx(y,x):
     last_dydx = a * x[-1] + b
     DYDX = np.array( list(DYDX) + [last_dydx])
     return DYDX
+
+def Integral(y,x=None):
+    if x == None:
+        dx = 1
+    else:
+        dx = dx(x)
+    I = 0
+    for i in np.arange(len(y) - 1):
+        I += dx[i]*(y[i] + y[i + 1])/2
+
+    return I
