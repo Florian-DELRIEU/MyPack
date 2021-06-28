@@ -11,7 +11,9 @@ def norm(x,y,z=None):
 
 def dx(x):
     x = np.array(x)
-    return x[1:] - x[:-1]
+    dx = x[1:] - x[:-1]
+    dx = np.array( list(dx) + list(dx[-1]))
+    return dx
 
 def dydx(y,x):
     x = np.array(x)
