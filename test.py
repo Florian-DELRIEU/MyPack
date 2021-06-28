@@ -1,14 +1,23 @@
-from MyPack.Math import *
+import MyPack.Math as m
 import matplotlib.pyplot as plt
-
-x = np.linspace(0,54,3)
-y = x
-
-dx = dx(x)
+import numpy as np
 
 
-I = 0
-for i in np.arange(len(y)-1):
-    I += dx[i] * (y[i] + y[i+1])/2
+x = np.linspace(0,10,100)
+y = np.sin(x)
+Y = -np.cos(x)
 
-print(I)
+dx = m.dx(x)
+
+Int = dx * (y[:-1] + y[1:]) / 2
+
+plt.figure(1)
+plt.clf()
+plt.plot(x,y,"b-",label="f")
+plt.plot(x,Y,"b--",label="F")
+plt.plot(x[:-1],Int,"r-",label="I")
+plt.legend(loc="upper right")
+
+plt.show()
+
+print(m.Integral(y,x))

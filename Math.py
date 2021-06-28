@@ -11,9 +11,10 @@ def norm(x,y,z=None):
 
 def dx(x):
     x = np.array(x)
-    dx = x[1:] - x[:-1]
-    dx = np.array( list(dx) + list(dx[-1]))
-    return dx
+    DX = x[1:] - x[:-1]
+    DX =  list(DX)
+    DX = DX + DX[-1]
+    return np.array(DX)
 
 def dydx(y,x):
     x = np.array(x)
@@ -27,12 +28,12 @@ def dydx(y,x):
     return DYDX
 
 def Integral(y,x=None):
-    if x == None:
-        dx = 1
+    if x.any() == None:
+        Dx = 1
     else:
-        dx = dx(x)
+        Dx = dx(x)
     I = 0
     for i in np.arange(len(y) - 1):
-        I += dx[i]*(y[i] + y[i + 1])/2
+        I += Dx[i]*(y[i] + y[i + 1])/2
 
     return I
