@@ -11,7 +11,7 @@ def norm(x,y,z=None):
 
 def diff(y,x=None):
     y = np.array(y)
-    if x == None:
+    if x.any() == None:
         DYDX = (y[1:] - y[:-1])
         DYDX = np.array( list(DYDX) + [DYDX[-1]] )
     else:

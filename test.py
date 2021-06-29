@@ -3,16 +3,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-x = np.linspace(0,10,10)
-y = x
-Y = -np.cos(x)
+x = np.linspace(0,10,100)
+f = np.sin(x)
+deriv_f = np.cos(x)
 
-dydx = diff(x)
+dfdx = diff(f,x)
 
 plt.figure(1)
 plt.clf()
-plt.plot(x,y,"b-",label="f")
-plt.plot(x,dydx,"b--",label="df")
+plt.plot(x,f,"b-",label="f")
+plt.plot(x,deriv_f,"b--",label="df")
+plt.plot(x,dfdx,"b-x",label="dydx")
 
 plt.legend(loc="upper right")
 plt.show()
