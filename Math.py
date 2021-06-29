@@ -35,3 +35,13 @@ def Integr(f,x=None):
     for i in np.arange(len(f) - 1):
         I += Dx[i]*(f[i] + f[i + 1])/2
     return I
+
+def primit(f,x=None,CI=0):
+    f = np.array(f)
+    x = np.array(x)
+    if x.any() == None: i_array = np.arange(len(f))[:-1]
+    else:               i_array = np.arange(len(x))[:-1]
+    I = CI
+    for i in i_array:
+        I.append(Integr(f[:i+2],x[:i+2]))
+    return np.array(I)
