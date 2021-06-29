@@ -17,3 +17,5 @@ plt.plot(x,dfdx,"b-x",label="dydx")
 
 plt.legend(loc="upper right")
 plt.show()
+
+print("Intrégale : ",Integral(f,x))

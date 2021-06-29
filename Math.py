@@ -25,10 +25,12 @@ def diff(y,x=None):
     return DYDX
 
 def Integral(y,x=None):
+    y = np.array(y)
+    x = np.array(x)
     if x.any() == None:
         Dx = 1
     else:
-        Dx = dx(x)
+        Dx = diff(x)
     I = 0
     for i in np.arange(len(y) - 1):
         I += Dx[i]*(y[i] + y[i + 1])/2
