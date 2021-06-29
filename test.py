@@ -1,13 +1,13 @@
-import MyPack.Math as m
+from MyPack.Math import *
 import matplotlib.pyplot as plt
 import numpy as np
 
 
-x = np.linspace(0,10,100)
-y = np.sin(x)
+x = np.linspace(0,10,10)
+y = x
 Y = -np.cos(x)
 
-dx = m.dx(x)
+dx = diff(x)
 
 Int = dx * (y[:-1] + y[1:]) / 2
 
@@ -20,4 +20,4 @@ plt.legend(loc="upper right")
 
 plt.show()
 
-print(m.Integral(y,x))
+print(Integral(y,x))

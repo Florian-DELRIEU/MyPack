@@ -9,17 +9,13 @@ def norm(x,y,z=None):
     else:
         return np.sqrt(x**2 + y**2 + z**2)
 
-def dx(x):
-    x = np.array(x)
-    DX = x[1:] - x[:-1]
-    DX =  list(DX)
-    DX = DX + DX[-1]
-    return np.array(DX)
-
-def dydx(y,x):
-    x = np.array(x)
+def diff(y,x=None):
     y = np.array(y)
-    DYDX = (y[1:] - y[:-1])/(x[1:] - x[:-1]) # len(DXDY) = len(x) - 1
+    if x == None:
+        DYDX = (y[1:] - y[:-1])
+    else:
+        x = np.array(x)
+        DYDX = (y[1:] - y[:-1])/(x[1:] - x[:-1]) # len(DXDY) = len(x) - 1
     # Regression linéaire pour le dernier points pour avoir la meme longueur que x
     a = (DYDX[-1] - DYDX[-2])/(x[-2] - x[-3])
     b = DYDX[-1] - a*x[-2]
