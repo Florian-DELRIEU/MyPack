@@ -11,11 +11,11 @@ def norm(x,y,z=None):
 
 def diff(y,x=None):
     y = np.array(y)
+    x = np.array(x)
     if x.any() == None:
         DYDX = (y[1:] - y[:-1])
         DYDX = np.array( list(DYDX) + [DYDX[-1]] )
     else:
-        x = np.array(x)
         DYDX = (y[1:] - y[:-1])/(x[1:] - x[:-1]) # len(DXDY) = len(x) - 1
     # Regression linéaire pour le dernier points pour avoir la meme longueur que x
         a = (DYDX[-1] - DYDX[-2])/(x[-2] - x[-3])
@@ -24,15 +24,14 @@ def diff(y,x=None):
         DYDX = np.array( list(DYDX) + [last_dydx])
     return DYDX
 
-def Integral(y,x=None):
-    y = np.array(y)
+def Integr(f,x=None):
+    f = np.array(f)
     x = np.array(x)
     if x.any() == None:
         Dx = 1
     else:
         Dx = diff(x)
     I = 0
-    for i in np.arange(len(y) - 1):
-        I += Dx[i]*(y[i] + y[i + 1])/2
-
+    for i in np.arange(len(f) - 1):
+        I += Dx[i]*(f[i] + f[i + 1])/2
     return I

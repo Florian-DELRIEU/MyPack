@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-x = np.linspace(0,10,100)
+x = np.linspace(0,10,1000)
 f = np.sin(x)
 deriv_f = np.cos(x)
 
@@ -18,4 +18,4 @@ plt.plot(x,dfdx,"b-x",label="dydx")
 plt.legend(loc="upper right")
 plt.show()
 
-print("Intrégale : ",Integral(f,x))
+print("Intrégale : ",Integr(f,x))
