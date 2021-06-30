@@ -3,14 +3,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def sort_PSD(t,x):
-    freq_t = freq(t)
+    freq_t = list(freq(t))
     psd_x = psd(x)
 
     sorted_psd = list(np.sort(psd_x))
     sorted_freq = list()
 
     for el in sorted_psd:
-        indic = np.where(psd_x == el)
+        indic = np.where(psd_x == el) # np.where sort un tuple de array
+        indic = int(indic[0]) # recupere la valeur en tant qu'entier
         sorted_freq.append(freq_t[indic])
 
     return sorted_psd[::-1] , sorted_freq[::-1]
