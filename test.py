@@ -6,12 +6,14 @@ def sort_PSD(t,x):
     freq_t = freq(t)
     psd_x = psd(x)
 
-    sorted_psd = np.sort(psd_x)
+    sorted_psd = list(np.sort(psd_x))
     sorted_freq = list()
 
     for el in sorted_psd:
         indic = np.where(psd_x == el)
         sorted_freq.append(freq_t[indic])
+
+    return sorted_psd[::-1] , sorted_freq[::-1]
 
 
 f1 , f2 = 10, 15
@@ -27,9 +29,14 @@ plt.plot(t,x)
 
 plt.figure(2)
 plt.clf()
-plt.plot(f,psd_x)
+plt.plot(f,psd_x,'b-+')
 
 plt.show()
 
 psd_x = list(psd_x)
 f = list(f)
+
+PSD_sort , f_sort = sort_PSD(t,x)
+
+print("max frequency",f_sort[:5])
+print("max PSD",PSD_sort[:5])
