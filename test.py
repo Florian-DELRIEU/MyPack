@@ -1,27 +1,19 @@
-from MyPack.Math import *
+from MyPack.Convert import *
 import matplotlib.pyplot as plt
 import numpy as np
 
+def Unzip(CSV_list):
+    LIST = list()
+    for i,csv in enumerate(CSV_list):
+        LIST.append(Csv2Dict(csv))
+    return LIST
 
-x = np.linspace(0,10,100)
-f = np.sin(x)
-deriv_f = np.cos(x)
-Int_f = - np.cos(x)
+CSV_list = [
+    "b1_Kinetic.csv",
+    "b2_Kinetic.csv",
+    "b3_Kinetic.csv"
+]
 
-dfdx = diff(f,x)
+x = Extract("b1_Kinetic.csv","x")
 
-F = primit(f,x,-1)
-
-plt.figure(1)
-plt.clf()
-plt.plot(x,f,"k-",label="f")
-plt.plot(x,deriv_f,"b--",label="df")
-plt.plot(x,dfdx,"b-x",label="dydx")
-plt.plot(x,Int_f,"r--",label="Int(F)")
-plt.plot(x,F,"r-x",label="F")
-
-plt.legend(loc="upper right")
-plt.show()
-
-print("Intrégale : ",Integr(f,x))
-
+L = Unzip(CSV_list)
