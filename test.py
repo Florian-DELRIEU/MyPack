@@ -1,19 +1,35 @@
-from MyPack.Convert import *
+from MyPack.FFT import *
 import matplotlib.pyplot as plt
 import numpy as np
 
-def Unzip(CSV_list):
-    LIST = list()
-    for i,csv in enumerate(CSV_list):
-        LIST.append(Csv2Dict(csv))
-    return LIST
+def sort_PSD(t,x):
+    freq_t = freq(t)
+    psd_x = psd(x)
 
-CSV_list = [
-    "b1_Kinetic.csv",
-    "b2_Kinetic.csv",
-    "b3_Kinetic.csv"
-]
+    sorted_psd = np.sort(psd_x)
+    sorted_freq = list()
 
-x = Extract("b1_Kinetic.csv","x")
+    for i,el in enumerate(sorted_psd):
+        np.where(el == psd_x)
+        sorted_freq.append(freq_t[i])
 
-L = Unzip(CSV_list)
+
+f1 , f2 = 10, 15
+t = np.linspace(0,1,50)
+x = np.sin(2*np.pi*f1*t) + np.cos(2*np.pi*f2*t)
+
+f = freq(t)
+psd_x = psd(x)
+
+plt.figure(1)
+plt.clf()
+plt.plot(t,x)
+
+plt.figure(2)
+plt.clf()
+plt.plot(f,psd_x)
+
+plt.show()
+
+psd_x = list(psd_x)
+f = list(f)
