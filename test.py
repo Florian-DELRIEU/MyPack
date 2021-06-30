@@ -9,9 +9,9 @@ def sort_PSD(t,x):
     sorted_psd = np.sort(psd_x)
     sorted_freq = list()
 
-    for i,el in enumerate(sorted_psd):
-        np.where(el == psd_x)
-        sorted_freq.append(freq_t[i])
+    for el in sorted_psd:
+        indic = np.where(psd_x == el)
+        sorted_freq.append(freq_t[indic])
 
 
 f1 , f2 = 10, 15
