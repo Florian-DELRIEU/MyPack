@@ -14,7 +14,7 @@ def sort_PSD(t,x):
         indic = int(indic[0]) # recupere la valeur en tant qu'entier
         sorted_freq.append(freq_t[indic])
 
-    return sorted_psd[::-1] , sorted_freq[::-1]
+    return (sorted_psd[::-1] , sorted_freq[::-1])
 
 
 f1 , f2 = 10, 15
