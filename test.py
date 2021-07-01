@@ -1,43 +1,20 @@
 from MyPack.FFT import *
+from MyPack.Math import *
 import matplotlib.pyplot as plt
 import numpy as np
 
-def sort_PSD(t,x):
-    freq_t = list(freq(t))
-    psd_x = psd(x)
+def norm(x,y=None,z=None):
+    if y==None and z==None: # si x est seul argument
+        x = np.array(x)
+        return np.sqrt(np.sum(x**2)) # renvoie la norme N du :array: (somme des carrés)
+    if z == None:   return np.sqrt(x**2 + y**2)
+    else:           return np.sqrt(x**2 + y**2 + z**2)
 
-    sorted_psd = list(np.sort(psd_x))
-    sorted_freq = list()
-
-    for el in sorted_psd:
-        indic = np.where(psd_x == el) # np.where sort un tuple de array
-        indic = int(indic[0]) # recupere la valeur en tant qu'entier
-        sorted_freq.append(freq_t[indic])
-
-    return (sorted_psd[::-1] , sorted_freq[::-1])
+def unit(x,y=None,z=None):
+    N = norm(x,y,z)
+    if y==None and z==None: return np.array(x) / N
+    if z == None:           return np.array([x,y]) / N
+    if z != None:           return np.array([x,y,z]) / N
 
 
-f1 , f2 = 10, 15
-t = np.linspace(0,1,50)
-x = np.sin(2*np.pi*f1*t) + np.cos(2*np.pi*f2*t)
-
-f = freq(t)
-psd_x = psd(x,dB=True)
-
-plt.figure(1)
-plt.clf()
-plt.plot(t,x)
-
-plt.figure(2)
-plt.clf()
-plt.plot(f,psd_x,'b-+')
-
-plt.show()
-
-psd_x = list(psd_x)
-f = list(f)
-
-PSD_sort , f_sort = sort_PSD(t,x)
-
-print("max frequency",f_sort[:5])
-print("max PSD",PSD_sort[:5])
+U = unit(2,3)
