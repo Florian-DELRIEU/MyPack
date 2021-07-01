@@ -208,7 +208,7 @@ def SaveInFile(VarName,DataFileName):
     file.close()
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
-def SaveInCSV(VarName,DataFileName,Key):
+def SaveInCSV(VarName=list(),DataFileName,Key):
     """
     Sauvegarde :VarName: dans un fichier .csv
     :param VarName:  Variable a sauvegarder
@@ -216,6 +216,8 @@ def SaveInCSV(VarName,DataFileName,Key):
     :param Key:  Colonne du .csv
     """
     file = open(DataFileName,"a")
+    if type(VarName) is not list:
+        VarName = [VarName]
 
     try:    DATA = Csv2Dict(DataFileName)  # Verifie si csv existe
     except: DATA = dict()  # sinon le cree
