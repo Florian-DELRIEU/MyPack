@@ -22,7 +22,7 @@ t = np.linspace(0,1,50)
 x = np.sin(2*np.pi*f1*t) + np.cos(2*np.pi*f2*t)
 
 f = freq(t)
-psd_x = psd(x)
+psd_x = psd(x,dB=True)
 
 plt.figure(1)
 plt.clf()

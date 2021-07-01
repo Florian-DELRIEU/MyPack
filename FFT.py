@@ -99,5 +99,3 @@ def sort_PSD(t,x):
         sorted_freq.append(freq_t[indic])
 
     return (sorted_psd[::-1] , sorted_freq[::-1])
-
-def dB(PSD)
