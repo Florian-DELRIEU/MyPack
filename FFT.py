@@ -25,7 +25,7 @@ def freq(t=np.array([]),x=np.array([])):
     fs = N/t[-1]  # sampling frequency
     return fs*np.arange(N/2 + 1)/N
 
-def psd(x):
+def psd(x,dB=False):
     """
     A utiliser avec :freq:
     :param x: array a analyser
@@ -33,7 +33,11 @@ def psd(x):
     """
     fftx = np.fft.fft(x)
     fftx = 2*fftx[:len(fftx)//2 + 1]/len(x)
-    return abs(fftx)
+    if not dB:
+        return abs(fftx)
+    if dB:
+        return 10*np.log(abs(fftx))
+
 
 def plot_psd(x,t=np.array([])):
     """
@@ -82,12 +86,16 @@ def ifft(fftx,n):
     IFFTx = np.fft.ifft(fftx,n=n)
     return IFFTx
 
-
-###############################################################
-def sort_FA(x,t): # Not working
+def sort_PSD(t,x):
+    freq_t = list(freq(t))
     psd_x = psd(x)
-    freq_x = freq(t,x)
-    sorted_psd = list()
+
+    sorted_psd = list(np.sort(psd_x))
     sorted_freq = list()
-    for _ in psd_x:
-        psdmax_indic = np.where(psd_x == np.max(psd_x))
+
+    for el in sorted_psd:
+        indic = np.where(psd_x == el) # np.where sort un tuple de array
+        indic = int(indic[0]) # recupere la valeur en tant qu'entier
+        sorted_freq.append(freq_t[indic])
+
+    return (sorted_psd[::-1] , sorted_freq[::-1])

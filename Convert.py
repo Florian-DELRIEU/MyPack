@@ -216,6 +216,8 @@ def SaveInCSV(VarName,DataFileName,Key):
     :param Key:  Colonne du .csv
     """
     file = open(DataFileName,"a")
+    if type(VarName) is not list:
+        VarName = [VarName]
 
     try:    DATA = Csv2Dict(DataFileName)  # Verifie si csv existe
     except: DATA = dict()  # sinon le cree
@@ -252,12 +254,8 @@ def Unzip(CSVfile):
     :param CSVfile:
     :return:
     """
-    if type(CSVfile) == list:
-        List = list()
-        for file in CSVfile:
-            List.append(Csv2Dict(file))
-        return List
-    else:
-        Dico = Csv2Dict(CSVfile)
-        return Dico
+    LIST = list()
+    for i, csv in enumerate(CSV_list):
+        LIST.append(Csv2Dict(csv))
+    return LIST
 
