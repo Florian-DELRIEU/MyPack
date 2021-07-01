@@ -208,7 +208,7 @@ def SaveInFile(VarName,DataFileName):
     file.close()
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
-def SaveInCSV(VarName=list(),DataFileName,Key):
+def SaveInCSV(VarName,DataFileName,Key):
     """
     Sauvegarde :VarName: dans un fichier .csv
     :param VarName:  Variable a sauvegarder
