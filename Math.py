@@ -84,3 +84,15 @@ def primit(f,x=None,CI=0):
         for i in i_array:
             I.append(Integr(f[:i+2],x[:i+2]))
     return np.array(I)-1
+
+def Value(f_array,x_array,x):
+    """
+
+    :param f_array: Nuage de point contenant les ordonnées
+    :param x_array: (Optionel) Nuage de point contenant les x
+    :return:
+    """
+    assert len(f_array) == len(x_array) , "f and x must be the same lenght"
+    indic = np.where(x_array[i] <= x <= x_array[i+1])[0]
+    a = (f_array[i+1] - f_array[i])/(x_array[i+1] - x_array[i+1])
+    b = f_array[i] - a * x_array[i]
