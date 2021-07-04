@@ -248,7 +248,7 @@ def Extract(CSVfile,key):
     data = Csv2Dict(CSVfile)
     return np.array(data[key])
 
-def Unzip(CSVfile):
+def Unzip(CSV_list):
     """
     Permet d'extraire plusieurs fichiers CSV dans une list de dict 
     :param CSVfile:
