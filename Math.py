@@ -44,7 +44,7 @@ def diff(y,x=None):
         DYDX = np.array( list(DYDX) + [last_dydx])
     return DYDX
 
-def Integr(f,x=None):
+def integr(f,x=None):
     """
     Intégre la fonction f sur toute la longeur de l'intervalle
     :param f: fonction
@@ -85,14 +85,19 @@ def primit(f,x=None,CI=0):
             I.append(Integr(f[:i+2],x[:i+2]))
     return np.array(I)-1
 
-def Value(f_array,x_array,x):
+def y_value(f_array,x_array,x):
     """
-
+    Calcul la fonction affine passant point par point et renvoie l'ordonnée d'un point x situé entre deux point
+    de :x_array:
     :param f_array: Nuage de point contenant les ordonnées
-    :param x_array: (Optionel) Nuage de point contenant les x
-    :return:
+    :param x_array: Nuage de point contenant les x
+    :return: as float
     """
-    assert len(f_array) == len(x_array) , "f and x must be the same lenght"
-    indic = np.where(x_array[i] <= x <= x_array[i+1])[0]
-    a = (f_array[i+1] - f_array[i])/(x_array[i+1] - x_array[i+1])
-    b = f_array[i] - a * x_array[i]
+    f_array , x_array = np.array(f_array) , np.array(x_array)
+    assert len(f_array) == len(x_array) , ":f_array: and :x_array: must be the same lenght"
+    assert x_array[0] <= x <= x_array[-1] , "x doit être compris dans :x_array:"
+    for i,el in enumerate(x_array):
+        if x_array[i] <= x <= x_array[i+1]: indic = i
+    a = (f_array[indic+1] - f_array[indic])/(x_array[indic+1] - x_array[indic])
+    b = f_array[indic] - a * x_array[indic]
+    return float(a*x + b)
