@@ -77,12 +77,12 @@ def primit(f,x=None,CI=0):
         i_array = np.arange(len(f))[:-1]
         I.append((f[0] + f[1])/2)
         for i in i_array:
-            I.append(Integr(f[:i + 2]))
+            I.append(integr(f[:i + 2]))
     else:
         i_array = np.arange(len(x))[:-1]
         I.append((x[1]-x[0])*(f[0] + f[1])/2)
         for i in i_array:
-            I.append(Integr(f[:i+2],x[:i+2]))
+            I.append(integr(f[:i+2],x[:i+2]))
     return np.array(I)-1
 
 def y_value(f_array,x_array,x):

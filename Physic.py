@@ -33,10 +33,17 @@ def rho_atm(z,methode="1B"):
             0.320, 0.316, 0.311, 0.307, 0.303
         ]
         z_list = np.arange(-500,12400,100)
-        return math.y_value(rho_list,z_list,z)
+        if z >= max(z_list):
+            return 0
+        else:
+            return math.y_value(rho_list,z_list,z)
 
 # Modele math issue du website (https://www.deleze.name/marcel/physique/TemperaturesEbullition/table_masse_vol.html)
     if methode == "1B":
     # Modele math de la methode "1A"
-        rho = lambda z: 352.995 * ((1-0.0000225577*z)**(5.25516)) / (288.15 - 0.0065*z)
-        return rho(z)
+        rho = lambda z: np.real( 352.995 * ((1-0.0000225577*z)**(5.25516)) / (288.15 - 0.0065*z) )
+        output = rho(z)
+        indic = np.where(z >= 40000)[0]
+        if len(indic) == 0: pass
+        else:               output[indic] = 0
+        return output
