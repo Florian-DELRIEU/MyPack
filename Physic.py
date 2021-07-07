@@ -34,3 +34,9 @@ def rho_atm(z,methode="1A"):
         ]
         z_list = np.arange(-500,12400,100)
         return math.y_value(rho_list,z_list,z)
+
+# Modele math issue du website (https://www.deleze.name/marcel/physique/TemperaturesEbullition/table_masse_vol.html)
+    if methode == "1B":
+    # Modele math de la methode "1A"
+        rho = lambda z: 352.995 * ((1-0.0000225577*z)**(5.25516)) / (288.15 - 0.0065*z)
+        return rho(z)
