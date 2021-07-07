@@ -1,7 +1,7 @@
 import numpy as np
 import MyPack.Math as math
 
-def rho_atm(z,methode="1A"):
+def rho_atm(z,methode="1B"):
 # Data from standart atmosphere ( https://www.deleze.name/marcel/physique/TemperaturesEbullition/table_masse_vol.html )
     if methode == "1A":
         rho_list = [
