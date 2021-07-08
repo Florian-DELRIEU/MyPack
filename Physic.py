@@ -4,7 +4,7 @@ import MyPack.Math as math
 def rho_atm(z,methode="1B"):
 # Data from standart atmosphere ( https://www.deleze.name/marcel/physique/TemperaturesEbullition/table_masse_vol.html )
     if methode == "1A":
-        rho_list = [
+        rho_list = [ # z = np.arange(-500,12400,100)
             1.285, 1.273, 1.261, 1.249, 1.237,
             1.225, 1.213, 1.202, 1.190, 1.179,
             1.167, 1.156, 1.145, 1.134, 1.123,
@@ -41,9 +41,11 @@ def rho_atm(z,methode="1B"):
 # Modele math issue du website (https://www.deleze.name/marcel/physique/TemperaturesEbullition/table_masse_vol.html)
     if methode == "1B":
     # Modele math de la methode "1A"
-        rho = lambda z: np.real( 352.995 * ((1-0.0000225577*z)**(5.25516)) / (288.15 - 0.0065*z) )
-        output = rho(z)
-        indic = np.where(z >= 40000)[0]
-        if len(indic) == 0: pass
-        else:               output[indic] = 0
-        return output
+        rho = np.real( 352.995 * ((1-0.0000225577*z)**(5.25516)) / (288.15 - 0.0065*z) )
+        if type(z) == np.ndarray:
+            rho[np.where(np.isnan(rho))] = 0  # si ==nan alors =0
+            rho[np.where(rho <= 1e-5)] = 0  # si inf à 1e-5 alors =0
+        else:
+            if rho <= 1e-5 or np.isnan(rho):
+                rho = 0
+        return rho
