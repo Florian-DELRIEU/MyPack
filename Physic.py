@@ -1,6 +1,14 @@
 import numpy as np
 import MyPack.Math as math
 
+# Physical datas
+G = 6.674*e-11 #N m^2/kg^2 (newton square meters per kilogram squared)
+Earth_mass  = 5.97*e24  #kg (kilograms)
+Moon_mass   = 7.35*e22  #kg (kilograms)
+Sun_mass    = 1.99*e30  #kg (kilograms)
+T0          = -273.15   #K
+C0          = 2.998*e8 #m/s (meters per second)
+
 def rho_atm(z,methode="1B"):
 # Data from standart atmosphere ( https://www.deleze.name/marcel/physique/TemperaturesEbullition/table_masse_vol.html )
     if methode == "1A":
@@ -37,7 +45,6 @@ def rho_atm(z,methode="1B"):
             return 0
         else:
             return math.y_value(rho_list,z_list,z)
-
 # Modele math issue du website (https://www.deleze.name/marcel/physique/TemperaturesEbullition/table_masse_vol.html)
     if methode == "1B":
     # Modele math de la methode "1A"
@@ -49,3 +56,39 @@ def rho_atm(z,methode="1B"):
             if rho <= 1e-5 or np.isnan(rho):
                 rho = 0
         return rho
+
+def Temp_atm(z,methode="1A"):
+    if methode == "1A":
+        temp_list = [
+            18.3, 17.6, 17.0, 16.3, 15.7,
+            15.0, 14.4, 13.7, 13.1, 12.4,
+            11.8, 11.1, 10.5, 9.8, 9.1,
+            8.5, 7.9, 7.2, 6.5, 5.9,
+            5.3, 4.6, 4.0, 3.3, 2.7,
+            2.0, 1.4, 0.7, 0.1, -0.6,
+            - 1.3, -1.9, -2.6, -3.2, -3.8,
+            - 4.5, -5.2, -5.8, -6.4, -7.1,
+            - 7.8, -8.4, -9.1, -9.7, -10.4,
+            - 11.0, -11.7, -12.3, -13.0, -13.6,
+            - 14.3, -14.9, -15.6, -16.2, -16.9,
+            - 17.5, -18.2, -18.8, -19.5, -20.1,
+            - 20.8, -21.4, -22.1, -22.7, -23.4,
+            - 24.0, -24.7, -25.3, -26.0, -26.6,
+            - 27.3, -27.9, -28.6, -29.2, -29.9,
+            - 30.5, -31.2, -31.8, -32.5, -33.1,
+            - 33.8, -34.4, -35.1, -35.7, -36.4,
+            - 37.0, -37.7, -38.3, -39.0, -39.6,
+            - 40.3, -40.9, -41.5, -42.2, -42.9,
+            - 43.5, -44.2, -44.8, -45.5, -46.1,
+            - 46.8, -47.4, -48.1, -48.7, -49.4,
+            - 50.0, -50.7, -51.3, -52.0, -52.6,
+            - 53.3, -53.9, -54.6, -55.2, -55.9,
+            - 56.5, -57.1, -57.8, -58.5, -59.1,
+            - 59.8, -60.4, -61.1, -61.7, -62.4,
+            - 63.0, -63.6, -64.3, -65.0, -65.6  ]
+        z_list = np.arange(-500, 12400, 100)
+        assert type(z) is not np.ndarray , "Z can't be an array"
+        if z >= max(z_list):
+            return 0
+        else:
+            return math.y_value(rho_list,z_list,z)
