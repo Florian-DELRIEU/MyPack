@@ -7,7 +7,8 @@ Earth_mass  = 5.97*e24  #kg (kilograms)
 Moon_mass   = 7.35*e22  #kg (kilograms)
 Sun_mass    = 1.99*e30  #kg (kilograms)
 T0          = -273.15   #K
-C0          = 2.998*e8 #m/s (meters per second)
+C_light     = 2.998*e8  #m/s (meters per second)
+C_sound     = 340.27    #m/s (meters per second)  (condition standart)
 
 def rho_atm(z,methode="1B"):
 # Data from standart atmosphere ( https://www.deleze.name/marcel/physique/TemperaturesEbullition/table_masse_vol.html )
@@ -56,6 +57,8 @@ def rho_atm(z,methode="1B"):
             if rho <= 1e-5 or np.isnan(rho):
                 rho = 0
         return rho
+
+def sound_speed(T,M,gamma=7/5):
 
 def Temp_atm(z,methode="1A"):
     if methode == "1A":
