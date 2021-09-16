@@ -101,3 +101,12 @@ def y_value(f_array,x_array,x):
     a = (f_array[indic+1] - f_array[indic])/(x_array[indic+1] - x_array[indic])
     b = f_array[indic] - a * x_array[indic]
     return float(a*x + b)
+
+def divide(a,b):
+    """
+    Divide that not return :Divide by zero: error
+    """
+    try:
+        return a / b
+    except:
+        return inf
