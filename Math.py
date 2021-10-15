@@ -102,11 +102,12 @@ def y_value(f_array,x_array,x):
     b = f_array[indic] - a * x_array[indic]
     return float(a*x + b)
 
-def divide(a,b):
+def divide(a,b,nbDecim=2):
     """
     Divide that not return :Divide by zero: error
+    :param nbDecim: Nombre de décimal à afficher
     """
     try:
-        return a / b
+        return round(a / b,nbDecim)
     except:
         return np.NaN
