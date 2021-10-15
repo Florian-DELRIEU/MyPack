@@ -33,15 +33,19 @@ def truncSignificatif(num,nbSignificatif):
 
 def truncDecimal(num,nbDecimal):
     NumInString = str(num)
-    NonDecimal = NumInString.split(".")[0]
-    Decimal = NumInString.split(".")[1]
-    if nbDecimal < len(Decimal):
-        TrunquedNum = NonDecimal + "." + Decimal[:nbDecimal]
-        TrunquedNum = float(TrunquedNum)
-    else:
+    NumInList = NumInString.split(".")
+    if len(NumInList) == 1:
         TrunquedNum = num
-    if nbDecimal == 0:
-        TrunquedNum = int(NonDecimal)
+    else:
+        NonDecimal = NumInString.split(".")[0]
+        Decimal = NumInString.split(".")[1]
+        if nbDecimal < len(Decimal):
+            TrunquedNum = NonDecimal + "." + Decimal[:nbDecimal]
+            TrunquedNum = float(TrunquedNum)
+        else:
+            TrunquedNum = num
+        if nbDecimal == 0:
+            TrunquedNum = int(NonDecimal)
 
     return TrunquedNum
 
