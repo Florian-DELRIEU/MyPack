@@ -80,26 +80,26 @@ def int2rom(number=int()):
     roman= str()
     assert type(number) is int and number > 0 , "Must be an integer greater than 0"
     assert number < 4000 , "This program can't translate number over 3999 now. Need the roman sign for 5000"
-    while number is not 0:
-        if number//1000 is not 0:
+    while number != 0:
+        if number//1000 != 0:
             roman += "M"
             number -= 1000
-        elif number//500 is not 0:
+        elif number//500 != 0:
             roman += "D"
             number -= 500
-        elif number//100 is not 0:
+        elif number//100 != 0:
             roman += "C"
             number -= 100
-        elif number//50 is not 0:
+        elif number//50 != 0:
             roman += "L"
             number -= 50
-        elif number//10 is not 0:
+        elif number//10 != 0:
             roman += "X"
             number -= 10
-        elif number//5 is not 0:
+        elif number//5 != 0:
             roman += "V"
             number -= 5
-        elif number//1 is not 0:
+        elif number//1 != 0:
             roman += "I"
             number -= 1
         else:  number = 0
@@ -128,9 +128,9 @@ def rom2int(roman=str()):
     for l in roman:
         if l not in ["I","V","X","L","C","D","M"]:  assert False , "roman must be composed by I,V,X,L,C,D,M signs only"
     for el in ErrorList:
-        if roman.find(el) is not -1:                assert False, "Error roman number badly written"
+        if roman.find(el) != -1:                assert False, "Error roman number badly written"
 
-    while roman is not "":
+    while roman != "":
         if "M" in roman:
             number += 1000
             roman = roman.replace("M","",1)
@@ -171,3 +171,26 @@ def rom2int(roman=str()):
             number += 1
             roman = roman.replace("I","",1)
     return number
+
+def createPath(path):
+    import Myos
+    import os
+    path_list = list()
+    current_path = "D:\\OneDrive\\Cours\\Python\\Thermometers_reader" #os.getcwd()
+    Terminal = Myos.getOS()
+    if Terminal == "PC": separator = "\\"
+    elif Terminal == "MAC": separator = "/"
+    else:return EnvironmentError, "Wrong terminal"
+    if "/" in path:path_list = path.split("/")
+    elif "\\" in path:path_list = path.split("\\")
+    for el in path_list:  # Garde uniquement les noms de dossiers
+        if ("/" or "\\" or "") in el: path_list.remove(el)
+    for i, el in enumerate(path_list):
+        try: os.mkdir(current_path+separator+el)
+        except: pass
+        finally:current_path += separator + el
+
+    return path_list
+
+path = "test/test2/test3"
+createPath(path)
