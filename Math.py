@@ -111,3 +111,7 @@ def divide(a,b,nbDecim=2):
         return round(a / b,nbDecim)
     except:
         return np.NaN
+
+def Normal(x,mu=0,sigma=1):
+    x = np.array(x)
+    return (1/(sigma*np.sqrt(2*np.pi))*np.e**(-1/2*((x - mu)/sigma)**2))
