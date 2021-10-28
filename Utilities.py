@@ -173,10 +173,10 @@ def rom2int(roman=str()):
     return number
 
 def createPath(path):
-    import Myos
+    from MyPack import Myos
     import os
     path_list = list()
-    current_path = "D:\\OneDrive\\Cours\\Python\\Thermometers_reader" #os.getcwd()
+    current_path = os.getcwd()
     Terminal = Myos.getOS()
     if Terminal == "PC": separator = "\\"
     elif Terminal == "MAC": separator = "/"
@@ -191,6 +191,3 @@ def createPath(path):
         finally:current_path += separator + el
 
     return path_list
-
-path = "test/test2/test3"
-createPath(path)
