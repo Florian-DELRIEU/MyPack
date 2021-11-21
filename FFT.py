@@ -9,8 +9,7 @@ def fft(x):
     :param x: array a analyser
     :return: array contenant les coefficients de fourrier
     """
-    fftx = np.fft.fft(x)
-    return fftx
+    return np.fft.fft(x)
 
 def freq(t=np.array([]),x=np.array([])):
     """
@@ -33,10 +32,8 @@ def psd(x,dB=False):
     """
     fftx = np.fft.fft(x)
     fftx = 2*fftx[:len(fftx)//2 + 1]/len(x)
-    if not dB:
-        return abs(fftx)
-    if dB:
-        return 10*np.log(abs(fftx))
+    if not dB:  return abs(fftx)
+    else:       return 10*np.log(abs(fftx))
 
 
 def plot_psd(x,t=np.array([])):
@@ -49,7 +46,6 @@ def plot_psd(x,t=np.array([])):
     import matplotlib.pyplot as plt
     plt.ion()
     if len(t)==0:   t=np.arange(len(x))
-    else:           pass
     psdx = psd(x)
     f = freq(t,x)
     plt.figure()
@@ -83,15 +79,14 @@ def ifft(fftx,n):
     :param fftx:
     :param n: longeueur du signal voulue
     """
-    IFFTx = np.fft.ifft(fftx,n=n)
-    return IFFTx
+    return np.fft.ifft(fftx,n=n)
 
 def sort_PSD(t,x):
     freq_t = list(freq(t))
     psd_x = psd(x)
 
     sorted_psd = list(np.sort(psd_x))
-    sorted_freq = list()
+    sorted_freq = []
 
     for el in sorted_psd:
         indic = np.where(psd_x == el) # np.where sort un tuple de array

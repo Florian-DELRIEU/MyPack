@@ -24,8 +24,9 @@ def File2List(DataFileName):
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
 def File2Dict(DataFileName,separator="***"):
-    Output = dict()
-    convertList = list()
+    convert = bool
+    Output = {}
+    convertList = []
     FileToImport = open(DataFileName,"r")
     FileList = FileToImport.read().split(separator+"\n")
     for data in FileList:
@@ -43,8 +44,7 @@ def File2Dict(DataFileName,separator="***"):
             except:
                 convert = False
                 continue
-        if convert == True: Output[curTitle] = convertList.copy()
-        if convert == False: Output[curTitle] = curList.copy()
+        Output[curTitle] = convertList.copy() if convert else curList.copy()
         curList.clear()
         convertList.clear()
 
@@ -56,14 +56,10 @@ def Dict2File(Dico,FileName,separator="***"):
         assert type(Dico) is dict
     except:
         return AssertionError , "Dico must be a dictionnary"
-    
     File = open(FileName,"w")
-
-    loop = 0
-    for k in Dico.keys():
+    for loop, k in enumerate(Dico.keys()):
         if loop != 0:
             File.write(separator+"\n")
-        loop += 1
         File.write(str(k)+"\n")
         for el in Dico[k]:
             File.write(str(el)+"\n")
@@ -96,8 +92,8 @@ def AsPoint(DataFileName,convert=True):
     y data
     ****************
     """
-    X_data = list()
-    Y_data = list()
+    X_data = []
+    Y_data = []
     LastImport = None
     Data = open(DataFileName,"r")
     LineList = Data.readlines()
@@ -108,11 +104,9 @@ def AsPoint(DataFileName,convert=True):
             if LastImport == (None or "Y"): 
                 X_data.append(float(line))
                 LastImport = "X"
-            if LastImport == "X": 
+            if LastImport == (None or "X"):
                 Y_data.append(float(line))
                 LastImport = "Y"
-
-    outputList = X_data + [":"] + Y_data
     return X_data,Y_data
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------

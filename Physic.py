@@ -1,18 +1,21 @@
 import numpy as np
-import MyPack.Math as math
+import Math as math
 
 # Physical datas
-G = 6.674*e-11 #N m^2/kg^2 (newton square meters per kilogram squared)
-Earth_mass  = 5.97*e24  #kg (kilograms)
-Moon_mass   = 7.35*e22  #kg (kilograms)
-Sun_mass    = 1.99*e30  #kg (kilograms)
+G = 6.674e-11 #N m^2/kg^2 (newton square meters per kilogram squared)
+Earth_mass  = 5.97e24  #kg (kilograms)
+Moon_mass   = 7.35e22  #kg (kilograms)
+Sun_mass    = 1.99e30  #kg (kilograms)
 T0          = -273.15   #K
-C_light     = 2.998*e8  #m/s (meters per second)
+C_light     = 2.998e8  #m/s (meters per second)
 C_sound     = 340.27    #m/s (meters per second)  (condition standart)
 
 def rho_atm(z,methode="1B"):
 # Data from standart atmosphere ( https://www.deleze.name/marcel/physique/TemperaturesEbullition/table_masse_vol.html )
     if methode == "1A":
+        z_list = np.arange(-500,12400,100)
+        if z >= max(z_list):
+            return 0
         rho_list = [ # z = np.arange(-500,12400,100)
             1.285, 1.273, 1.261, 1.249, 1.237,
             1.225, 1.213, 1.202, 1.190, 1.179,
@@ -41,11 +44,7 @@ def rho_atm(z,methode="1B"):
             0.341, 0.337, 0.333, 0.328, 0.324,
             0.320, 0.316, 0.311, 0.307, 0.303
         ]
-        z_list = np.arange(-500,12400,100)
-        if z >= max(z_list):
-            return 0
-        else:
-            return math.y_value(rho_list,z_list,z)
+        return math.y_value(rho_list,z_list,z)
 # Modele math issue du website (https://www.deleze.name/marcel/physique/TemperaturesEbullition/table_masse_vol.html)
     if methode == "1B":
     # Modele math de la methode "1A"
@@ -53,14 +52,20 @@ def rho_atm(z,methode="1B"):
         if type(z) == np.ndarray:
             rho[np.where(np.isnan(rho))] = 0  # si ==nan alors =0
             rho[np.where(rho <= 1e-5)] = 0  # si inf à 1e-5 alors =0
-        else:
-            if rho <= 1e-5 or np.isnan(rho):
-                rho = 0
+        elif rho <= 1e-5 or np.isnan(rho):
+            rho = 0
         return rho
 
-def sound_speed(T,M,gamma=7/5):
+def sound_speed(T,M,gamma=7/5): pass
 
 def Temp_atm(z,methode="1A"):
+    """
+    FIXME
+    TODO
+        - add rho_list
+    :param z: Altutide (en m)
+    :param methode: Méthode de calcul
+    """
     if methode == "1A":
         temp_list = [
             18.3, 17.6, 17.0, 16.3, 15.7,
@@ -92,6 +97,6 @@ def Temp_atm(z,methode="1A"):
         z_list = np.arange(-500, 12400, 100)
         assert type(z) is not np.ndarray , "Z can't be an array"
         if z >= max(z_list):
-            return 0
-        else:
-            return math.y_value(rho_list,z_list,z)
+            return None
+        rho_list = []
+        return math.y_value(rho_list,z_list,z)

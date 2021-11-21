@@ -11,9 +11,9 @@ def truncSignificatif(num,nbSignificatif):
     :return:
     """
     NumInString = str(num)
-    if nbSignificatif <= len(NumInString.split('.')[0]):    # si plus petit que la taille de la partie non decimale
+    if nbSignificatif <= len(NumInString.split('.')[0]): # si plus petit que la taille de la partie non decimale
         TrunquedNum = NumInString[:nbSignificatif] # Affiche les chiffres significatifs voulue
-        for i in np.arange(len(NumInString.split('.')[0]) - nbSignificatif):
+        for _ in np.arange(len(NumInString.split('.')[0]) - nbSignificatif):
             """
             Verifie la difference entre la taille de la partie non decimale de :num: et le nombre de chiffre
             significatif pour afficher les "0" manquant
@@ -63,11 +63,10 @@ def getFromDict(Dico,KeyList,Log=False):
     param :KeyList: Liste des :keys: à copier dans :Dico:
     param :Log: Si :True: affiche un log en cas d'erreur
     """
-    newDico = dict()
+    newDico = {}
     for thisKey in KeyList:
         if thisKey in Dico.keys(): newDico[thisKey] = Dico[thisKey]
-        else:
-            if Log: print(str(thisKey) + " not found !")
+        elif Log: print(str(thisKey) + " not found !")
     return newDico
 
 def int2rom(number=int()):
@@ -173,16 +172,18 @@ def rom2int(roman=str()):
     return number
 
 def createPath(path):
-    from MyPack import Myos
+    import Myos
     import os
-    path_list = list()
+    path_list = []
     current_path = os.getcwd()
     Terminal = Myos.getOS()
-    if Terminal == "PC": separator = "\\"
+    ##
+    if Terminal == "PC":    separator = "\\"
     elif Terminal == "MAC": separator = "/"
-    else:return EnvironmentError, "Wrong terminal"
-    if "/" in path:path_list = path.split("/")
-    elif "\\" in path:path_list = path.split("\\")
+    else:                   return EnvironmentError, "Wrong terminal"
+    ##
+    if "/" in path:         path_list = path.split("/")
+    elif "\\" in path:      path_list = path.split("\\")
     for el in path_list:  # Garde uniquement les noms de dossiers
         if ("/" or "\\" or "") in el: path_list.remove(el)
     for i, el in enumerate(path_list):

@@ -44,13 +44,11 @@ def Dict2CSV(Dict, DataFileName, separator="***"):
     row = 0
     N_keys = len(Dict.keys())
     N_row = []
-    i_key = 0
-    for k in Dict.keys():
+    for i_key, k in enumerate(Dict.keys()):
         if i_key < N_keys - 1:
             file.write(str(k) + ",")
         elif i_key == N_keys - 1:
             file.write(str(k) + "\n")
-        i_key += 1
     row = 0
     i_key = 0
     for k in Dict.keys():
@@ -87,10 +85,10 @@ def SaveInCSV(VarName,DataFileName,Key):
         VarName = [VarName]
 
     try:    DATA = Csv2Dict(DataFileName)  # Verifie si csv existe
-    except: DATA = dict()  # sinon le cree
+    except: DATA = {}
 
     for current_value in VarName:  # Sauvegarde tout les élement de :VarName:
-        if Key in DATA.keys():  # si :key: existe dans le CSV
+        if Key in DATA:  # si :key: existe dans le CSV
             i=0
             while i < len(DATA[Key]):
                 el = DATA[Key][i]
@@ -98,11 +96,9 @@ def SaveInCSV(VarName,DataFileName,Key):
                     DATA[Key].remove(el)
                     i-=1
                 i+=1
-            DATA[Key].append(current_value)  # Ajoute valeur a save
         else:
-            DATA[Key] = list()
-            DATA[Key].append(current_value)
-
+            DATA[Key] = []
+        DATA[Key].append(current_value)  # Ajoute valeur a save
     Dict2CSV(DATA,DataFileName)
 # ----------------------------------------------------------------------------------------------------------------------
 def ExtractCSV(CSVfile,key):
@@ -121,7 +117,4 @@ def UnzipCSV(CSV_list):
     :param CSVfile:
     :return:
     """
-    LIST = []
-    for i, csv in enumerate(CSV_list):
-        LIST.append(Csv2Dict(csv))
-    return LIST
+    return [Csv2Dict(csv) for i, csv in enumerate(CSV_list)]

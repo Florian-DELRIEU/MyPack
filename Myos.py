@@ -5,9 +5,7 @@ def getOS():
     Verifie sur quelle machine le code est exécuté
     :return: :MAC: ou :PC:
     """
-    if os.getcwd()[0] == "/":TERMINAL = "MAC"
-    else:                   TERMINAL = "PC"
-    return TERMINAL
+    return "MAC" if os.getcwd()[0] == "/" else "PC"
 
 def goto_Onedrive():
     TERMINAL = getOS()
