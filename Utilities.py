@@ -170,25 +170,3 @@ def rom2int(roman=str()):
             number += 1
             roman = roman.replace("I","",1)
     return number
-
-def createPath(path):
-    import Myos
-    import os
-    path_list = []
-    current_path = os.getcwd()
-    Terminal = Myos.getOS()
-    ##
-    if Terminal == "PC":    separator = "\\"
-    elif Terminal == "MAC": separator = "/"
-    else:                   return EnvironmentError, "Wrong terminal"
-    ##
-    if "/" in path:         path_list = path.split("/")
-    elif "\\" in path:      path_list = path.split("\\")
-    for el in path_list:  # Garde uniquement les noms de dossiers
-        if ("/" or "\\" or "") in el: path_list.remove(el)
-    for i, el in enumerate(path_list):
-        try: os.mkdir(current_path+separator+el)
-        except: pass
-        finally:current_path += separator + el
-
-    return path_list
