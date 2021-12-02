@@ -109,3 +109,6 @@ def divide(a,b,nbDecim=2):
 def Normal(x,mu=0,sigma=1):
     x = np.array(x)
     return (1/(sigma*np.sqrt(2*np.pi))*np.e**(-1/2*((x - mu)/sigma)**2))
+
+def div_euclid(num:float,denum:float):
+    return (num//denum,num % denum)
