@@ -10,7 +10,7 @@ def norm(x,y=None,z=None):
         - si :array: racine de la somme des carrés
     :param y: , :param z: coordonées
     """
-    if y is None and z is None: # si x est seul argument
+    if y == None and z == None: # si x est seul argument
         x = np.array(x)
         return np.sqrt(np.sum(x**2)) # renvoie la norme N du :array: (somme des carrés)
     if z == None:   return np.sqrt(x**2 + y**2)
@@ -22,7 +22,7 @@ def unit(x,y=None,z=None):
     :param x: , :param y: , :param z:
     """
     N = norm(x,y,z)
-    if y is None and z is None: return np.array(x) / N
+    if y == None and z == None: return np.array(x) / N
     if z == None:           return np.array([x,y]) / N
     if z != None:           return np.array([x,y,z]) / N
 
@@ -32,7 +32,7 @@ def diff(y,x=None):
     """
     y = np.array(y)
     x = np.array(x)
-    if x.any() is None:
+    if x.any() == None:
         DYDX = (y[1:] - y[:-1])
         DYDX = np.array( list(DYDX) + [DYDX[-1]] )
     else:
@@ -53,7 +53,7 @@ def integr(f,x=None):
     """
     f = np.array(f)
     x = np.array(x)
-    Dx = 1 if x.any() is None else diff(x)
+    Dx = 1 if x.any() == None else diff(x)
     return sum(Dx[i]*(f[i] + f[i + 1])/2 for i in np.arange(len(f) - 1))
 
 def primit(f,x=None,CI=0):
@@ -67,7 +67,7 @@ def primit(f,x=None,CI=0):
     f = np.array(f)
     x = np.array(x)
     I = []
-    if x.any() is None:
+    if x.any() == None:
         i_array = np.arange(len(f))[:-1]
         I.append((f[0] + f[1])/2)
         for i in i_array:
