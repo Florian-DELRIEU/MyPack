@@ -15,5 +15,25 @@ def decimal2Hour(time:float,separator=":"):
         seconds -= 60
     return f"{int(hours)}{separator}{int(minutes)}{separator}{seconds}"
 
-
-print(decimal2Hour(1.2))
+def get_mounth(number:str or int):
+    """
+    Return the mounth regarding the number
+    :param number:
+    :return:
+    """
+    number = int(number) # verify :number: is a :int:
+    Mounth_list = [
+        "Janvier",
+        "Fevrier",
+        "Mars",
+        "Avril",
+        "Mai",
+        "Juin",
+        "Juillet",
+        "Aout",
+        "Septembre",
+        "Octobre",
+        "Novembre",
+        "Decembre"
+    ]
+    return Mounth_list[number-1]
