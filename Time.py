@@ -1,4 +1,4 @@
-from Math import div_euclid
+from MyPack2.Math import div_euclid
 
 def Hour2decimal(time:str="hh:mm:ss",separator=":"):
     hours = int(time.split(separator)[0])

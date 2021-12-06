@@ -1,5 +1,5 @@
 import numpy as np
-import Math as math
+import MyPack2.Math as math
 
 # Physical datas
 G = 6.674e-11 #N m^2/kg^2 (newton square meters per kilogram squared)
