@@ -38,3 +38,29 @@ def add_figure(pos:tuple,size:tuple = (640/1440,480/900)):
     fig = plt.figure(figsize=(size_x,size_y),dpi=get_ScreenSize()[0])
     move_figure(fig,pos[0],pos[1])
     return fig
+
+def add_subfigure(nb_x:int,nb_y:int):
+    """
+    FIXME
+        - Don't work
+    :param nb_x:
+    :param nb_y:
+    :return:
+    """
+    part_x = get_ScreenSize()[0] / nb_x
+    part_y = get_ScreenSize()[1] / nb_y
+    size = (part_x,part_y)
+    i_x = 0
+    i_y = 0
+    fig_list = []
+    while i_x * i_y <= nb_x * nb_y:
+        fig_list.append(
+            add_figure(
+            (0+i_x*size[0],
+             0+i_y*size[1]))
+        )
+        if i_x == nb_x:
+            i_x =  0
+            i_y += 1
+
+add_subfigure(2,2)
