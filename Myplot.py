@@ -73,26 +73,30 @@ def add_subplots(subplots:tuple,pos:tuple=(0.2,0.1),size:tuple=(8,6),dpi=80,full
     move_figure(fig,pos[0],pos[1])
     return fig,ax
 
-def add_subfigure(nb_x:int,nb_y:int):
+def add_subfigures(nb_x:int,nb_y:int,dpi=80):
     """
     FIXME
         - Don't work
+        - /Users/floriandelrieu/OneDrive/Python/MyPack2/Myplot.py:50: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+          fig = plt.figure(figsize=(size_x,size_y),dpi=dpi)
     :param nb_x:
     :param nb_y:
     :return:
     """
     part_x = get_ScreenSize()[0] / nb_x
     part_y = get_ScreenSize()[1] / nb_y
-    size = (part_x,part_y)
+    size = (part_x/dpi,part_y/dpi)
     i_x = 0
     i_y = 0
     fig_list = []
-    while i_x * i_y <= nb_x * nb_y:
+    while i_x * i_y <= (nb_x-1) * (nb_y-1):
         fig_list.append(
             add_figure(
-            (0+i_x*size[0],
-             0+i_y*size[1]))
+                (0+i_x*size[0],0+i_y*size[1]),
+                size, dpi=dpi
+            )
         )
         if i_x == nb_x:
             i_x =  0
             i_y += 1
+    return fig_list
