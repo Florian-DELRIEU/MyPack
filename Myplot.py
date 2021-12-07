@@ -31,7 +31,7 @@ def move_figure(figure, x, y):
         # You can also use window.setGeometry
         figure.canvas.manager.window.move(x, y)
 
-def add_figure(pos:tuple,size:tuple = (8,6),dpi=80):
+def add_figure(pos:tuple=(0.2,0.1),size:tuple=(8,6),dpi=80,fullscreen=False):
     """
     :param pos: position of the figure:
                         - (0,0) is the upper left corner
@@ -42,14 +42,16 @@ def add_figure(pos:tuple,size:tuple = (8,6),dpi=80):
     :param dpi: dpi of the figure
     :return:    - figure
     """
-    screen_format = get_ScreenFormat()
+    if fullscreen:
+        size = (get_ScreenSize()[0]/dpi,get_ScreenSize()[1]/dpi)
+        pos = (0,0)
     size_x = size[0]
     size_y = size[1]
     fig = plt.figure(figsize=(size_x,size_y),dpi=dpi)
     move_figure(fig,pos[0],pos[1])
     return fig
 
-def add_subplots(subplots:tuple,pos:tuple,size:tuple=(8,6),dpi=80):
+def add_subplots(subplots:tuple,pos:tuple=(0.2,0.1),size:tuple=(8,6),dpi=80,fullscreen=False):
     """
     :param subplots: tuple that return the number of subplots (n_row,n_colon)
     :param pos: position of the figure:
@@ -62,6 +64,9 @@ def add_subplots(subplots:tuple,pos:tuple,size:tuple=(8,6),dpi=80):
     :return:    - figure
                 - ax : list of axes
     """
+    if fullscreen:
+        size = (get_ScreenSize()[0]/dpi,get_ScreenSize()[1]/dpi)
+        pos = (0,0)
     size_x = size[0]
     size_y = size[1]
     fig,ax = plt.subplots(subplots[0],subplots[1],figsize=(size_x,size_y),dpi=dpi)
