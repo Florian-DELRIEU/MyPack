@@ -11,7 +11,7 @@ def truncSignificatif(num,nbSignificatif):
     :param nbSignificatif: Nombre de chiffre significatif a garder
     :return:
     """
-    if type(num) == int():
+    if type(num) == int:
         return num
     NumInString = str(num)
     if nbSignificatif <= len(NumInString.split('.')[0]): # si plus petit que la taille de la partie non decimale
@@ -35,7 +35,7 @@ def truncSignificatif(num,nbSignificatif):
     return TrunquedNum
 
 def truncDecimal(num,nbDecimal):
-    if type(num) == int():
+    if type(num) == int:
         return num
     NumInString = str(num)
     NumInList = NumInString.split(".")
