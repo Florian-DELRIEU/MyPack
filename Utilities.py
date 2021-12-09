@@ -6,10 +6,13 @@ import numpy as np
 def truncSignificatif(num,nbSignificatif):
     """
     Tronque  :num: et ne garde que :nbSignificatif: chiffres significatifs
+        - si num est un :int(): alors ne fait rien
     :param num: float a tronquer
     :param nbSignificatif: Nombre de chiffre significatif a garder
     :return:
     """
+    if type(num) == int():
+        return num
     NumInString = str(num)
     if nbSignificatif <= len(NumInString.split('.')[0]): # si plus petit que la taille de la partie non decimale
         TrunquedNum = NumInString[:nbSignificatif] # Affiche les chiffres significatifs voulue
@@ -32,6 +35,8 @@ def truncSignificatif(num,nbSignificatif):
     return TrunquedNum
 
 def truncDecimal(num,nbDecimal):
+    if type(num) == int():
+        return num
     NumInString = str(num)
     NumInList = NumInString.split(".")
     if len(NumInList) == 1:
@@ -46,7 +51,6 @@ def truncDecimal(num,nbDecimal):
             TrunquedNum = num
         if nbDecimal == 0:
             TrunquedNum = int(NonDecimal)
-
     return TrunquedNum
 
 def AskUser(Phrase,ValeurDefaut):
