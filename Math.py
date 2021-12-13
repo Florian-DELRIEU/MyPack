@@ -10,10 +10,10 @@ def norm(x,y=None,z=None):
         - si :array: racine de la somme des carrés
     :param y: , :param z: coordonées
     """
-    if y == None and z == None: # si x est seul argument
+    if y is None and z is None: # si x est seul argument
         x = np.array(x)
         return np.sqrt(np.sum(x**2)) # renvoie la norme N du :array: (somme des carrés)
-    if z == None:   return np.sqrt(x**2 + y**2)
+    if z is None:   return np.sqrt(x**2 + y**2)
     else:           return np.sqrt(x**2 + y**2 + z**2)
 
 def unit(x,y=None,z=None):
@@ -22,9 +22,9 @@ def unit(x,y=None,z=None):
     :param x: , :param y: , :param z:
     """
     N = norm(x,y,z)
-    if y == None and z == None: return np.array(x) / N
-    if z == None:           return np.array([x,y]) / N
-    if z != None:           return np.array([x,y,z]) / N
+    if y is None and z is None: return np.array(x) / N
+    if z is None:               return np.array([x,y]) / N
+    if z is not None:           return np.array([x,y,z]) / N
 
 def diff(y,x=None):
     """
@@ -32,7 +32,7 @@ def diff(y,x=None):
     """
     y = np.array(y)
     x = np.array(x)
-    if x.any() == None:
+    if x.any() is None:
         DYDX = (y[1:] - y[:-1])
         DYDX = np.array( list(DYDX) + [DYDX[-1]] )
     else:
@@ -53,7 +53,7 @@ def integr(f,x=None):
     """
     f = np.array(f)
     x = np.array(x)
-    Dx = 1 if x.any() == None else diff(x)
+    Dx = 1 if x.any() is None else diff(x)
     return sum(Dx[i]*(f[i] + f[i + 1])/2 for i in np.arange(len(f) - 1))
 
 def primit(f,x=None,CI=0):
@@ -67,7 +67,7 @@ def primit(f,x=None,CI=0):
     f = np.array(f)
     x = np.array(x)
     I = []
-    if x.any() == None:
+    if x.any() is None:
         i_array = np.arange(len(f))[:-1]
         I.append((f[0] + f[1])/2)
         for i in i_array:
@@ -87,6 +87,7 @@ def y_value(f_array,x_array,x):
     :param x_array: Nuage de point contenant les x
     :return: as float
     """
+    indic = int()
     f_array , x_array = np.array(f_array) , np.array(x_array)
     assert len(f_array) == len(x_array) , ":f_array: and :x_array: must be the same lenght"
     assert x_array[0] <= x <= x_array[-1] , "x doit être compris dans :x_array:"
