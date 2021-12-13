@@ -113,3 +113,21 @@ def Normal(x,mu=0,sigma=1):
 
 def div_euclid(num:float,denum:float):
     return (num//denum,num % denum)
+
+def partial_mean(x:np.array,length=5):
+    """
+    TODO
+        - Faire des tests
+    Renvoi une moyenne partielle de l'array x
+    :param x: Array
+    :param length: Nombre d'entrée dans :x: pris en compte dans le calcul de la moyenne
+    :exemple:
+            - si length = 4 ; renvoie np.mean( x[i:i-4] )
+    """
+    mean_x=[]
+    for i,value in enumerate(x):
+        if i < length:
+            mean_x.append( np.mean(x[:i+1]) )
+        else:
+            mean_x.append( np.mean(x[i-(length-1):i]))
+    return mean_x
