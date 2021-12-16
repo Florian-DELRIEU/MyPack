@@ -7,7 +7,7 @@ rd = np.random
 
 TESTING_CASE = "FFT"
 
-if TESTING_CASE == "Partial Mean":
+if TESTING_CASE == "Partial Mean 1":
     t = np.linspace(0,1,200)
     f = np.cos(t) + rd.random(200)*0.1
     f1_mean = partial_mean(f,100)

@@ -131,3 +131,8 @@ def partial_mean(x:np.array,length=5):
         else:
             mean_x.append( np.mean(x[i-(length-1):i]))
     return mean_x
+
+def array_mean(array_list:list):
+    for arr in array_list:
+        assert len(arr) == len(array_list[0]) , ""
+    return sum(array_list) / len(array_list)
