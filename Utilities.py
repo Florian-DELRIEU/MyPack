@@ -174,3 +174,16 @@ def rom2int(roman=str()):
             number += 1
             roman = roman.replace("I","",1)
     return number
+
+def Join_AsStrings(object:list() or tuple(),join_item = ""):
+    """
+    Join all element in :list: or :tuple: in a single :string: joined by optionnal item
+    :param object: list or tuple that contains all string to join
+    :param join_item: item added between all items added
+    """
+    txt = str()
+    for string in object:
+        txt += string + join_item
+    return txt
+
+test_list = ["Ceci","est","une","phrase"]
