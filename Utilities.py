@@ -183,7 +183,7 @@ def Join_AsStrings(object:list() or tuple(),join_item = ""):
     """
     txt = str()
     for string in object:
-        txt += string + join_item
+        txt += str(string) + join_item
     return txt
 
 test_list = ["Ceci","est","une","phrase"]
