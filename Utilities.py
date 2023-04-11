@@ -2,6 +2,11 @@
 Regroupe différentes méthodes générales pour diveres applications
 """
 import numpy as np
+import string
+
+alphabet_low = list(string.ascii_lowercase)
+alphabet_up = list(string.ascii_uppercase)
+
 
 def truncSignificatif(num,nbSignificatif):
     """
@@ -185,5 +190,11 @@ def Join_AsStrings(object:list() or tuple(),join_item = ""):
     for string in object:
         txt += str(string) + join_item
     return txt
+
+def random_string(lenght=int()):
+    output_text = ""
+    for i in range(lenght):
+        output_text += np.random.choice(alphabet_low+alphabet_up)
+    return output_text
 
 test_list = ["Ceci","est","une","phrase"]
