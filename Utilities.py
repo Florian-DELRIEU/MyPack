@@ -192,9 +192,6 @@ def Join_AsStrings(object:list() or tuple(),join_item = ""):
     return txt
 
 def random_string(lenght=int()):
-    output_text = ""
-    for i in range(lenght):
-        output_text += np.random.choice(alphabet_low+alphabet_up)
-    return output_text
+    return "".join(np.random.choice(alphabet_low + alphabet_up) for _ in range(lenght))
 
 test_list = ["Ceci","est","une","phrase"]
