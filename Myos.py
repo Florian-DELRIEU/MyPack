@@ -43,6 +43,8 @@ def rename_mss(path=None):
     """
     Renomme les fichier png de MSS (Military Symbol) en changeant le numéros par une série de lettre aléatoire.
     :return:
+    TODO
+        Ajouter une execption lorsque le png mss est "mss-symbol.png"
     """
     if path is None: path = os.getcwd()
     for filename in os.listdir(path):  # parcours les fichiers depuis une liste
