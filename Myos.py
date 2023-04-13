@@ -48,11 +48,13 @@ def rename_mss(path=None):
     """
     if path is None: path = os.getcwd()
     for filename in os.listdir(path):  # parcours les fichiers depuis une liste
+        if filename == "mss-symbol.png":
+            new_filename = "mss-symbol ().png"
         if ("mss-symbol" and ".png") in filename:
             prefix_name = filename.split("(")[0]
             sufix_name = filename.split(")")[1]
             random_id = random_string(3)
             new_filename = f"{prefix_name}({random_id}){sufix_name}"
-            os.rename(f"{path}/{filename}", f"{path}/{new_filename}")
+        os.rename(f"{path}/{filename}", f"{path}/{new_filename}")
 
 TERMINAL = getOS()
