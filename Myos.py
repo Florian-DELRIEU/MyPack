@@ -49,9 +49,9 @@ def rename_mss(path=None):
         if ("mss-symbol" and ".png") in filename:
             prefix_name = filename.split("(")[0]
             sufix_name = filename.split(")")[1]
-            random_id = random_string(10)
-            new_filename = prefix_name + "("+ random_id + ")" + sufix_name
-            os.renames(filename,new_filename)  #fixme erreur lors de l'éxécution de cette ligne (l. 264-265 de os.py)
+            random_id = random_string(3)
+            new_filename = f"{prefix_name}({random_id}){sufix_name}"
+            os.rename(f"{path}/{filename}", f"{path}/{new_filename}")
 
 TERMINAL = getOS()
 
