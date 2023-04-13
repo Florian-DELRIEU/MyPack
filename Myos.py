@@ -42,19 +42,26 @@ def createPath(path):
 def rename_mss(path=None):
     """
     Renomme les fichier png de MSS (Military Symbol) en changeant le numéros par une série de lettre aléatoire.
+        - Les fichiers sont de la typo:
+                mss-symbol (##).png     où ## sont des chiffres
+                mss-symbol.png          Exception
     :return:
-    TODO
-        Ajouter une execption lorsque le png mss est "mss-symbol.png"
+        - Les fichiers seront de la typo
+                mss-symbol (@@@).png    avec @@ sont des lettres
     """
     if path is None: path = os.getcwd()
     for filename in os.listdir(path):  # parcours les fichiers depuis une liste
+        # Boucle d'exception car ne correspond pas a la bonne typo
         if filename == "mss-symbol.png":
-            new_filename = "mss-symbol ().png"
+            new_filename = "mss-symbol (0).png"  # Prépare le fichier a la bonne typo
+            os.rename(f"{path}/{filename}", f"{path}/{new_filename}")
+            filename = new_filename  # Ecrase l'ancien nom du fichier
+        # Boucle pour tout les fichiers
         if ("mss-symbol" and ".png") in filename:
             prefix_name = filename.split("(")[0]
             sufix_name = filename.split(")")[1]
             random_id = random_string(3)
             new_filename = f"{prefix_name}({random_id}){sufix_name}"
-        os.rename(f"{path}/{filename}", f"{path}/{new_filename}")
+            os.rename(f"{path}/{filename}", f"{path}/{new_filename}")
 
 TERMINAL = getOS()
