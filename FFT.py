@@ -32,8 +32,7 @@ def psd(x,dB=False):
     """
     fftx = np.fft.fft(x)
     fftx = 2*fftx[:len(fftx)//2 + 1]/len(x)
-    if not dB:  return abs(fftx)
-    else:       return 10*np.log(abs(fftx))
+    return 10*np.log(abs(fftx)) if dB else abs(fftx)
 
 
 def plot_psd(x,t=np.array([])):

@@ -50,7 +50,7 @@ def truncDecimal(num,nbDecimal):
         NonDecimal = NumInString.split(".")[0]
         Decimal = NumInString.split(".")[1]
         if nbDecimal < len(Decimal):
-            TrunquedNum = NonDecimal + "." + Decimal[:nbDecimal]
+            TrunquedNum = f"{NonDecimal}.{Decimal[:nbDecimal]}"
             TrunquedNum = float(TrunquedNum)
         else:
             TrunquedNum = num
@@ -59,7 +59,7 @@ def truncDecimal(num,nbDecimal):
     return TrunquedNum
 
 def AskUser(Phrase,ValeurDefaut):
-    Phrase += " [{}] :  ".format(ValeurDefaut)
+    Phrase += f" [{ValeurDefaut}] :  "
     output = input(Phrase)
     if output == "": output = ValeurDefaut
 
@@ -75,7 +75,8 @@ def getFromDict(Dico,KeyList,Log=False):
     newDico = {}
     for thisKey in KeyList:
         if thisKey in Dico.keys(): newDico[thisKey] = Dico[thisKey]
-        elif Log: print(str(thisKey) + " not found !")
+        elif Log:
+            print(f"{str(thisKey)} not found !")
     return newDico
 
 def int2rom(number=int()):

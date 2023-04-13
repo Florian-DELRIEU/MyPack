@@ -60,21 +60,20 @@ class AstralBody:
         self.filename = ""
         self.Color = ""
         self.Mark = "o"
-        self.Kinetic = dict()
+        self.Kinetic = {}
         self.Kinetic["Time"] = np.array(Domain.t)
-        self.Kinetic["x"] = list()
-        self.Kinetic["y"] = list()
+        self.Kinetic["x"] = []
+        self.Kinetic["y"] = []
         self.Kinetic["vx"] = np.array([])
         self.Kinetic["vy"] = np.array([])
         self.Kinetic["ax"] = np.array([])
         self.Kinetic["ay"] = np.array([])
 
     def __repr__(self):
-        txt = """Astral Body
-            - Pos = ({} , {})
-            - Mass = {}
-        """.format(self.x,self.y,self.Mass)
-        return txt
+        return f"""Astral Body
+            - Pos = ({self.x} , {self.y})
+            - Mass = {self.Mass}
+        """
 
     def refresh(self,dt):
         if self.IsMoving:  # si il peut bouger
@@ -159,9 +158,10 @@ class AstralBody:
 
     def SaveKinetic(self,filename=""):
         filename = self.set_filename(filename)
-        Dict2CSV(self.Kinetic,filename+".csv")
+        Dict2CSV(self.Kinetic, f"{filename}.csv")
 
     def set_filename(self,filename=None):
+        # sourcery skip: remove-redundant-if, remove-redundant-pass
         if (filename == "" or None) and (self.filename == "" or None):
             filename = f"Body_{self.bodylist_indic()}"
             self.filename = filename
@@ -172,5 +172,4 @@ class AstralBody:
 
     def bodylist_indic(self):
         arr = np.array(self.Domain.BodyList)
-        i = int(np.where(arr==self)[0])
-        return i
+        return int(np.where(arr==self)[0])
