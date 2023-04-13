@@ -54,7 +54,3 @@ def rename_mss(path=None):
             os.rename(f"{path}/{filename}", f"{path}/{new_filename}")
 
 TERMINAL = getOS()
-
-## TEST ZONE
-path = "/Users/floriandelrieu/Desktop/test_mss"
-rename_mss(path)
