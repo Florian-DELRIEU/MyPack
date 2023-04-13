@@ -3,7 +3,7 @@ Diverses fonctions et méthode pour des analyses mathématiques
 """
 import numpy as np
 
-def norm(x,y=None,z=None):
+def norm(x,y=None,z=None):  # sourcery skip: assign-if-exp
     """
     Retourne la norme d'un vecteur (x,y,z) ou d'un array (x)
     :param x: coordonés
@@ -24,7 +24,7 @@ def unit(x,y=None,z=None):
     N = norm(x,y,z)
     if y is None and z is None: return np.array(x) / N
     if z is None:               return np.array([x,y]) / N
-    if z is not None:           return np.array([x,y,z]) / N
+    return np.array([x,y,z]) / N
 
 def diff(y,x=None):
     """
@@ -56,7 +56,7 @@ def integr(f,x=None):
     Dx = 1 if x.any() is None else diff(x)
     return sum(Dx[i]*(f[i] + f[i + 1])/2 for i in np.arange(len(f) - 1))
 
-def primit(f,x=None,CI=0):
+def primit(f,x=None,CI=0):  # sourcery skip: for-append-to-extend
     """
     Renvoie la primitive calculé par différence finie
     :param f:
@@ -104,7 +104,7 @@ def divide(a,b,nbDecim=2):
     """
     try:
         return round(a / b,nbDecim)
-    except:
+    except ValueError: # Masque uniquement les erreurs "ValueError"
         return np.NaN
 
 def Normal(x,mu=0,sigma=1):

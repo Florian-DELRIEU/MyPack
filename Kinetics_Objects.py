@@ -1,3 +1,6 @@
+import numpy as np
+from MyPack2.Saves.CSV import Dict2CSV
+import matplotlib as plt
 
 class Ballistic_Object:
     def __init__(self,m=5,x=0,y=0,vx=0,vy=0,surface=1,drag=0.1):
