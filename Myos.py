@@ -1,4 +1,5 @@
 import os
+from MyPack2.Utilities import random_string
 
 def getOS():
     """
@@ -38,4 +39,22 @@ def createPath(path):
         finally:current_path += separator + el
     return path_list
 
+def rename_mss(path=None):
+    """
+    Renomme les fichier png de MSS (Military Symbol) en changeant le numéros par une série de lettre aléatoire.
+    :return:
+    """
+    if path is None: path = os.getcwd()
+    for filename in os.listdir(path):  # parcours les fichiers depuis une liste
+        if ("mss-symbol" and ".png") in filename:
+            prefix_name = filename.split("(")[0]
+            sufix_name = filename.split(")")[1]
+            random_id = random_string(10)
+            new_filename = prefix_name + "("+ random_id + ")" + sufix_name
+            os.renames(filename,new_filename)  #fixme erreur lors de l'éxécution de cette ligne (l. 264-265 de os.py)
+
 TERMINAL = getOS()
+
+## TEST ZONE
+path = "/Users/floriandelrieu/Desktop/test_mss"
+rename_mss(path)
