@@ -195,11 +195,13 @@ def Join_AsStrings(object:list() or tuple(),join_item = ""):
 def random_string(lenght=int()):
     return "".join(np.random.choice(alphabet_low + alphabet_up) for _ in range(lenght))
 
-def progress_print(iterable, loop_total=int(), loop_increment=list()):
+def progress_print(iterable, loop_total=int(), loop_increment=list() or int()):
+    if type(loop_increment) == int:
+        loop_increment = loop_increment * np.arange(loop_total//loop_increment)
     if iterable in loop_increment:
-        print(f"Progress Status:{iterable}  ({iterable/loop_total}%)")
+        print(f"Progress Status:{iterable}  ({iterable/loop_total*100}%)")
 
 
 ### TEST ZONE
 for i in range(100):
-    progress_print(i,100,[10,50,80])
+    progress_print(i,100,10)
