@@ -200,6 +200,8 @@ def progress_print(iterable, loop_total=int(), loop_increment=list() or int()):
         loop_increment = loop_increment * np.arange(loop_total//loop_increment)
     if iterable in loop_increment:
         print(f"Progress Status:{iterable}  ({iterable/loop_total*100}%)")
+    if iterable == loop_total-1:
+        print("Done -- 100 %")
 
 
 ### TEST ZONE
