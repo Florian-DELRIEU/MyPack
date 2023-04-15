@@ -195,4 +195,11 @@ def Join_AsStrings(object:list() or tuple(),join_item = ""):
 def random_string(lenght=int()):
     return "".join(np.random.choice(alphabet_low + alphabet_up) for _ in range(lenght))
 
-test_list = ["Ceci","est","une","phrase"]
+def progress_print(iterable, loop_total=int(), loop_increment=list()):
+    if iterable in loop_increment:
+        print(f"Progress Status:{iterable}  ({iterable/loop_total}%)")
+
+
+### TEST ZONE
+for i in range(100):
+    progress_print(i,100,[10,50,80])
