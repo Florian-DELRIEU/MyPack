@@ -3,6 +3,7 @@ Regroupe différentes méthodes générales pour diveres applications
 """
 import numpy as np
 import string
+import time as t
 
 alphabet_low = list(string.ascii_lowercase)
 alphabet_up = list(string.ascii_uppercase)
@@ -40,6 +41,14 @@ def truncSignificatif(num,nbSignificatif):
     return TrunquedNum
 
 def truncDecimal(num,nbDecimal):
+    """
+    FIXME
+        Ne marche quand num est en ecriture scientifique
+            - ex: 1.2348e-05 renvoie 1.2348 au lieu de 0.000012348
+    :param num:
+    :param nbDecimal:
+    :return:
+    """
     if type(num) == int:
         return num
     NumInString = str(num)
@@ -195,11 +204,28 @@ def Join_AsStrings(object:list() or tuple(),join_item = ""):
 def random_string(lenght=int()):
     return "".join(np.random.choice(alphabet_low + alphabet_up) for _ in range(lenght))
 
-def progress_print(iterable, loop_total=int(), loop_increment=list() or int()):
+def progress_print(iterable, loop_total=int(), loop_increment=list() or int(), show_time=1):
+    """
+    FIXME
+        Erreur lors de l'appel de old_time (since v2.5.4)
+        .
+        File "/Users/floriandelrieu/OneDrive/Python/MyPack2/Utilities.py", line 215, in progress_print
+        displayed_time = current_time - old_time
+        UnboundLocalError: local variable 'old_time' referenced before assignment
+        .
+        Last working version - v2.5.3
+    """
+    if i == 0: # assigne old_time
+        old_time = t.time()
     if type(loop_increment) == int:
         loop_increment = loop_increment * np.arange(loop_total//loop_increment)
     if iterable in loop_increment:
-        print(f"Progress Status:{iterable}  ({iterable/loop_total*100}%)")
+        if show_time == 1:
+            current_time = t.time()
+            displayed_time = current_time - old_time
+            old_time = current_time
+            displayed_time = f" - {displayed_time} sec since last check"
+        print(f"Progress Status:{iterable}  ({iterable/loop_total*100}%){displayed_time}")
     if iterable == loop_total-1:
         print("Done -- 100 %")
 
