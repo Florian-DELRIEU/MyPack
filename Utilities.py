@@ -212,7 +212,3 @@ def progress_print(iterable, loop_total=int(), loop_increment=list() or int(), s
     if iterable == loop_total - 1:
         print("Done -- 100 %")
 
-
-### TEST ZONE
-for i in range(100):
-    progress_print(i,100,10)
