@@ -205,28 +205,11 @@ def random_string(lenght=int()):
     return "".join(np.random.choice(alphabet_low + alphabet_up) for _ in range(lenght))
 
 def progress_print(iterable, loop_total=int(), loop_increment=list() or int(), show_time=1):
-    """
-    FIXME
-        Erreur lors de l'appel de old_time (since v2.5.4)
-        .
-        File "/Users/floriandelrieu/OneDrive/Python/MyPack2/Utilities.py", line 215, in progress_print
-        displayed_time = current_time - old_time
-        UnboundLocalError: local variable 'old_time' referenced before assignment
-        .
-        Last working version - v2.5.3
-    """
-    if i == 0: # assigne old_time
-        old_time = t.time()
     if type(loop_increment) == int:
-        loop_increment = loop_increment * np.arange(loop_total//loop_increment)
+        loop_increment = loop_increment*np.arange(loop_total//loop_increment)
     if iterable in loop_increment:
-        if show_time == 1:
-            current_time = t.time()
-            displayed_time = current_time - old_time
-            old_time = current_time
-            displayed_time = f" - {displayed_time} sec since last check"
-        print(f"Progress Status:{iterable}  ({iterable/loop_total*100}%){displayed_time}")
-    if iterable == loop_total-1:
+        print(f"Progress Status:{iterable}  ({iterable/loop_total*100}%)")
+    if iterable == loop_total - 1:
         print("Done -- 100 %")
 
 
