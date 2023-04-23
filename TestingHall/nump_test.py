@@ -15,6 +15,6 @@ B = A.reshape(3,3,10)
 C = A.copy()
 
 # Affiche chaque éléments au cours du temps (ex aa(t), ab(t), etc...)
-for i in range(A.shape[0]):
-    for j in range(A.shape[1]):
-        print(A[:,i,j]) #fixme (affiche comme je veux mais fais quand meme une erreur)
+for i in range(A.shape[1]):
+    for j in range(A.shape[2]):
+        print(A[:,i,j])

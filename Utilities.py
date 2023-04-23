@@ -212,3 +212,56 @@ def progress_print(iterable, loop_total=int(), loop_increment=list() or int(), s
     if iterable == loop_total - 1:
         print("Done -- 100 %")
 
+def reorder_array(arr,axe_indice=1):
+    """
+    TODO
+        Faire une description détaillé
+
+    fixme  ne marche pas correctement, les valeurs ne sont pas dans le bon ordre
+    :param arr:
+    :param axe_indice:
+    :return:
+    """
+    array_order = len(arr.shape)
+    if array_order == 3:
+        new_array = np.empty_like(arr)
+        for i in range(arr.shape[1]):
+            for j in range(arr.shape[2]):
+                new_array[:,i,j] = arr[:,i,j] #fixme erreur ici
+
+
+
+### TEST_ZONE
+A = np.array([
+       [
+        ['aa0', 'ab0', 'ac0'],
+        ['ba0', 'bb0', 'bc0'],
+        ['ca0', 'cb0', 'cc0']],
+       [['aa1', 'ab1', 'ac1'],
+        ['ba1', 'bb1', 'bc1'],
+        ['ca1', 'cb1', 'cc1']],
+       [['aa2', 'ab2', 'ac2'],
+        ['ba2', 'bb2', 'bc2'],
+        ['ca2', 'cb2', 'cc2']],
+       [['aa3', 'ab3', 'ac3'],
+        ['ba3', 'bb3', 'bc3'],
+        ['ca3', 'cb3', 'cc3']],
+       [['aa4', 'ab4', 'ac4'],
+        ['ba4', 'bb4', 'bc4'],
+        ['ca4', 'cb4', 'cc4']],
+       [['aa5', 'ab5', 'ac5'],
+        ['ba5', 'bb5', 'bc5'],
+        ['ca5', 'cb5', 'cc5']],
+       [['aa6', 'ab6', 'ac6'],
+        ['ba6', 'bb6', 'bc6'],
+        ['ca6', 'cb6', 'cc6']],
+       [['aa7', 'ab7', 'ac7'],
+        ['ba7', 'bb7', 'bc7'],
+        ['ca7', 'cb7', 'cc7']],
+       [['aa8', 'ab8', 'ac8'],
+        ['ba8', 'bb8', 'bc8'],
+        ['ca8', 'cb8', 'cc8']],
+       [['aa9', 'ab9', 'ac9'],
+        ['ba9', 'bb9', 'bc9'],
+        ['ca9', 'cb9', 'cc9']]])
+reorder_array(A)
