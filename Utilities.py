@@ -214,21 +214,38 @@ def progress_print(iterable, loop_total=int(), loop_increment=list() or int(), s
 
 def reorder_array(arr,axe_indice=1):
     """
-    TODO
-        Faire une description détaillé
+    Reordonne les axes d'un array 3 dimensions.
+    Soit A un tenseur d'ordre 2 enregistrer au cours de son évolution dans un tenseur T tel que:
+        T = A0, A1, A2, ..., An
+    Le tenseur T sera modifier en un tenseur T' tel que
+        T' = [[aa(t) , ab(t)]
+              [ba(t) , bb(t)]]
+    où aa,ab,ba,bb, sont les composantes du tenseur A au cours du temps.
+    Vulgairement le tenseur d'ordre 3, T, composé d'une succesion de tenseur d'ordre 2, A sera transformé
+    de la façon suivante
+    T(t,x,y) --> T(x,y,t)
 
-    :param arr:
-    :param axe_indice:
-    :return:
+    TODO
+        Ne marche pour le moment que pour les tenseurs d'ordre 3 dans cette configuration précise
+            - adapter cette fonction pour des tenseur d'ordre 2
+
+    :param arr: tenseur a réordonner de la shape (t,x,y)
+    :param axe_indice: indice de l'axe temporel du tenseur #fixme ne marche pas pour le moment
+    :return: tenseur réordonner de la shape (x,y,t)
     """
-    array_order = len(arr.shape)
-    if array_order == 3:
-        new_array = np.empty_like(arr)
+    array_order = len(arr.shape) #ordre du tenseur
+    new_array = np.empty_like(arr) # nouveau tenseur de meme :shape:
+    if array_order == 3: #fixme
+
+        # réordonne le nouveau tenseur de meme ordre avec les axes en ordre différents
         axe1, axe2, axe3 = new_array.shape
         new_array = new_array.reshape(axe2,axe3,axe1)
+
+        # remplie le nouveau tenseur
         for i in range(arr.shape[1]):
             for j in range(arr.shape[2]):
                 new_array[i,j,:] = arr[:,i,j]
+
     return new_array
 
 
