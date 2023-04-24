@@ -1,3 +1,4 @@
+# sourcery skip: use-fstring-for-concatenation
 import numpy as np
 
 # a.shape is (5,4)
