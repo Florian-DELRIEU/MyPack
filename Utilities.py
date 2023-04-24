@@ -217,7 +217,6 @@ def reorder_array(arr,axe_indice=1):
     TODO
         Faire une description détaillé
 
-    fixme  ne marche pas correctement, les valeurs ne sont pas dans le bon ordre
     :param arr:
     :param axe_indice:
     :return:
@@ -225,9 +224,12 @@ def reorder_array(arr,axe_indice=1):
     array_order = len(arr.shape)
     if array_order == 3:
         new_array = np.empty_like(arr)
+        axe1, axe2, axe3 = new_array.shape
+        new_array = new_array.reshape(axe2,axe3,axe1)
         for i in range(arr.shape[1]):
             for j in range(arr.shape[2]):
-                new_array[:,i,j] = arr[:,i,j] #fixme erreur ici
+                new_array[i,j,:] = arr[:,i,j]
+    return new_array
 
 
 
@@ -264,4 +266,4 @@ A = np.array([
        [['aa9', 'ab9', 'ac9'],
         ['ba9', 'bb9', 'bc9'],
         ['ca9', 'cb9', 'cc9']]])
-reorder_array(A)
+B = reorder_array(A)
