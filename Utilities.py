@@ -227,7 +227,7 @@ def reorder_array(arr,axe_indice=1):
 
     TODO
         Ne marche pour le moment que pour les tenseurs d'ordre 3 dans cette configuration précise
-            - adapter cette fonction pour des tenseur d'ordre 2
+            - Pouvoir adapter dans le cas ou les axes ne sont pas exactement dans cet ordre
 
     :param arr: tenseur a réordonner de la shape (t,x,y)
     :param axe_indice: indice de l'axe temporel du tenseur #fixme ne marche pas pour le moment
@@ -235,12 +235,19 @@ def reorder_array(arr,axe_indice=1):
     """
     array_order = len(arr.shape) #ordre du tenseur
     new_array = np.empty_like(arr) # nouveau tenseur de meme :shape:
-    if array_order == 3: #fixme
 
+    if array_order == 2:
+        # réordonne le nouveau tenseur de meme ordre avec les axes en ordre différents
+        axe1,axe2 = new_array.shape
+        new_array = new_array.reshape(axe2,axe1)
+        # remplie le nouveau tenseur
+        for i in range(arr.shape[1]):
+            new_array[i,:] = arr[:,i]
+
+    if array_order == 3:
         # réordonne le nouveau tenseur de meme ordre avec les axes en ordre différents
         axe1, axe2, axe3 = new_array.shape
         new_array = new_array.reshape(axe2,axe3,axe1)
-
         # remplie le nouveau tenseur
         for i in range(arr.shape[1]):
             for j in range(arr.shape[2]):
