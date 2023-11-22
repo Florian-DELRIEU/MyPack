@@ -2,11 +2,26 @@ import numpy as np
 from MyPack2.Saves.CSV import Dict2CSV
 import matplotlib as plt
 
-class Ballistic_Object:
-    def __init__(self,m=5,x=0,y=0,vx=0,vy=0,surface=1,drag=0.1):
+class Domain2D:
+    """
+    Objet représentant le domaine d'évolution des corps 2D. Cet objet regroupe des paramètres de gravité, de frottement
+    etc...
+    """
+    def __init__(self):
+        self.g_vector   = 9.81*np.array(0,-1)
+        self.rho_atmos  = 1.25
+
+class KineticBody2D:
+    """
+    Objet possédant les caractérisques d'un corps en mouvement dans un plan 2D.
+    """
+    def __init__(self, m=5, x=0, y=0, vx=0, vy=0, drag_surface=1, drag_coef=0.1,Domain=Domain2D):
+        self.rho = Domain.rho_atmos
+        self.g = Domain.g_vector
+
         self.mass = m
-        self.surface = surface
-        self.drag_coefficient = drag
+        self.drag_surface = drag_surface
+        self.drag_coefficient = drag_coef
         self.x = x
         self.y = y
         self.vx = vx
@@ -34,6 +49,20 @@ class Ballistic_Object:
         self.list_vy.append(self.vy)
         self.list_ax.append(self.ax)
         self.list_ay.append(self.ay)
+
+    def refresh(self,dt=1):
+        """
+
+        :param dt:
+        :return:
+        """
+
+    def calcul_acceleration(self):
+        velocity = self.vx**2 + self.vy**2
+        vel_unit_vector = np.array(self.vx,self.vy) / velocity
+
+        drag = 1/2 * self.rho * self.drag_surface * velocity**2 * self.drag_coefficient * (-vel_unit_vector)
+        grav = self.g*self.mass
         
 
 class AstralBody:
