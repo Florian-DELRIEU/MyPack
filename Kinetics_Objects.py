@@ -8,7 +8,7 @@ class Domain2D:
     etc...
     """
     def __init__(self):
-        self.g_vector   = 9.81*np.array(0,-1)
+        self.g_vector   = 9.81*np.array([0,-1])
         self.rho_atmos  = 1.25
 
 class KineticBody2D:
