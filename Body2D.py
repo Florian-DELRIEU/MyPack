@@ -12,13 +12,18 @@ class Character2D:
         self.color = "bo"
         self.size = 1
 
-    def move(self, V, angle, dt):
+    def move(self, dt):
+        self.rd_angle()
         # Modification d'angle aléatoire
-        angle = np.radians(angle)
-        angle += np.random.random(2)*np.pi
-        angle += np.degrees(angle)
-
-        Vx = V * np.cos(angle)
-        Vy = V * np.sin(angle)
+        Vx = self.V * np.cos(self.angle)
+        Vy = self.V * np.sin(self.angle)
         self.x += Vx*dt
         self.y += Vy*dt
+
+    def rd_angle(self):
+        """
+        Fais une selection random de l'angle
+        """
+        angle = np.radians(self.angle)
+        angle += np.random.random(2) * np.pi
+        self.angle += np.degrees(angle)

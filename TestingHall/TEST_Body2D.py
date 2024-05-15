@@ -12,3 +12,6 @@ plt.figure("TEST")
 plt.xlim(-10,10)
 plt.ylim(-10,10)
 plt.show()
+
+for i in range(10):
+    C1.move(1)
