@@ -1,0 +1,43 @@
+{
+  "options": {
+    "uniqueDesignation": "Grande Armée",
+    "sidc": "10031000000000009500"
+  },
+  "subOrganizations": [
+    {
+      "options": {
+        "uniqueDesignation": "1er Corps d'Infanterie",
+        "sidc": "10031000221211000000"
+      },
+      "subOrganizations": []
+    },
+    {
+      "options": {
+        "uniqueDesignation": "2ème Corps d'Infanterie",
+        "sidc": "10031000221211000000"
+      },
+      "subOrganizations": []
+    },
+    {
+      "options": {
+        "uniqueDesignation": "3ème Corps de Cavalerie",
+        "sidc": "10031000221211000000"
+      },
+      "subOrganizations": []
+    },
+    {
+      "options": {
+        "uniqueDesignation": "Vieille Garde",
+        "sidc": "10031000221211000000"
+      },
+      "subOrganizations": []
+    },
+    {
+      "options": {
+        "uniqueDesignation": "Jeune Garde",
+        "sidc": "10031000221211000000"
+      },
+      "subOrganizations": []
+    }
+  ]
+}
