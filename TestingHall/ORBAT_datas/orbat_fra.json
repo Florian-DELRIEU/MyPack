@@ -1,0 +1,359 @@
+{
+  "options": {
+    "uniqueDesignation": "Grande Armée",
+    "sidc": "10031000000000009500"
+  },
+  "subOrganizations": [
+    {
+      "options": {
+        "uniqueDesignation": "Ie Corps",
+        "sidc": "10031000221211000000"
+      },
+      "subOrganizations": [
+        {
+          "options": {
+            "uniqueDesignation": "1er Division",
+            "sidc": "10031000211211000000"
+          },
+          "subOrganizations": [
+            {
+              "options": {
+                "uniqueDesignation": "1e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "2e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "3e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            }
+          ]
+        },
+        {
+          "options": {
+            "uniqueDesignation": "2eme Division",
+            "sidc": "10031000211211000000"
+          },
+          "subOrganizations": [
+            {
+              "options": {
+                "uniqueDesignation": "4e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "5e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "6e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            }
+          ]
+        },
+        {
+          "options": {
+            "uniqueDesignation": "3eme Division",
+            "sidc": "10031000211211000000"
+          },
+          "subOrganizations": [
+            {
+              "options": {
+                "uniqueDesignation": "7e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "8e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "9e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            }
+          ]
+        },
+        {
+          "options": {
+            "uniqueDesignation": "4eme Division",
+            "sidc": "10031000211211000000"
+          },
+          "subOrganizations": [
+            {
+              "options": {
+                "uniqueDesignation": "10e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "11e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "12e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            }
+          ]
+        },
+        {
+          "options": {
+            "uniqueDesignation": "Batterie du Corps",
+            "sidc": "10031000171303000000"
+          },
+          "subOrganizations": []
+        }
+      ]
+    },
+    {
+      "options": {
+        "uniqueDesignation": "IIe Corps",
+        "sidc": "10031000221211000000"
+      },
+      "subOrganizations": [
+        {
+          "options": {
+            "uniqueDesignation": "5e Division",
+            "sidc": "10031000211211000000"
+          },
+          "subOrganizations": [
+            {
+              "options": {
+                "uniqueDesignation": "13e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "14e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "15e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            }
+          ]
+        },
+        {
+          "options": {
+            "uniqueDesignation": "6e Division",
+            "sidc": "10031000211211000000"
+          },
+          "subOrganizations": [
+            {
+              "options": {
+                "uniqueDesignation": "16e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "17e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "18e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            }
+          ]
+        },
+        {
+          "options": {
+            "uniqueDesignation": "7e Division",
+            "sidc": "10031000211211000000"
+          },
+          "subOrganizations": [
+            {
+              "options": {
+                "uniqueDesignation": "19e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "20e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "21e Regiment",
+                "sidc": "10031000171211000000"
+              },
+              "subOrganizations": []
+            }
+          ]
+        },
+        {
+          "options": {
+            "uniqueDesignation": "Batterie du Corps",
+            "sidc": "10031000171303000000"
+          },
+          "subOrganizations": []
+        }
+      ]
+    },
+    {
+      "options": {
+        "uniqueDesignation": "Corps Cavalerie",
+        "sidc": "10031000221213000000"
+      },
+      "subOrganizations": [
+        {
+          "options": {
+            "uniqueDesignation": "1er Division",
+            "sidc": "10031000211213000000"
+          },
+          "subOrganizations": [
+            {
+              "options": {
+                "uniqueDesignation": "1e Regiment",
+                "sidc": "10031000171213000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "2e Regiment",
+                "sidc": "10031000171213000000"
+              },
+              "subOrganizations": []
+            }
+          ]
+        },
+        {
+          "options": {
+            "uniqueDesignation": "2eme Division",
+            "sidc": "10031000211213000000"
+          },
+          "subOrganizations": [
+            {
+              "options": {
+                "uniqueDesignation": "3e Regiment",
+                "sidc": "10031000171213000000"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "4e Regiment",
+                "sidc": "10031000171213000000"
+              },
+              "subOrganizations": []
+            }
+          ]
+        },
+        {
+          "options": {
+            "uniqueDesignation": "Artillerie a cheval",
+            "sidc": "10031000171303030000"
+          },
+          "subOrganizations": []
+        }
+      ]
+    },
+    {
+      "options": {
+        "uniqueDesignation": "Corps de la Garde",
+        "sidc": "10031000221211000100"
+      },
+      "subOrganizations": [
+        {
+          "options": {
+            "uniqueDesignation": "Vielle Garde",
+            "sidc": "10031000211211000100"
+          },
+          "subOrganizations": [
+            {
+              "options": {
+                "uniqueDesignation": "1e Reg. Grenadiers",
+                "sidc": "10031000171211000100"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "2e Reg. Grenadiers",
+                "sidc": "10031000171211000100"
+              },
+              "subOrganizations": []
+            }
+          ]
+        },
+        {
+          "options": {
+            "uniqueDesignation": "Jeune Garde",
+            "sidc": "10031000211211006100"
+          },
+          "subOrganizations": [
+            {
+              "options": {
+                "uniqueDesignation": "1e Reg. Voltigeurs",
+                "sidc": "10031000171211006100"
+              },
+              "subOrganizations": []
+            },
+            {
+              "options": {
+                "uniqueDesignation": "2e Reg. Voltigeurs",
+                "sidc": "10031000171211006100"
+              },
+              "subOrganizations": []
+            }
+          ]
+        },
+        {
+          "options": {
+            "uniqueDesignation": "Batterie de la Garde",
+            "sidc": "10031000171303000100"
+          },
+          "subOrganizations": []
+        }
+      ]
+    }
+  ]
+}

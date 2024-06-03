@@ -1,0 +1,44 @@
+Level,Unit Name,Commander,Type,Subordinate Units
+Corps,1er Corps d'Infanterie,Général Jean-Baptiste Drouet d'Erlon,Infantry,1ère Division d'Infanterie;2ème Division d'Infanterie;3ème Division d'Infanterie;4ème Division d'Infanterie
+Division,1ère Division d'Infanterie,Général de Division Quiot,Infantry,1er Régiment de Ligne;2ème Régiment de Ligne;3ème Régiment de Ligne
+Regiment,1er Régiment de Ligne,,Infantry,
+Regiment,2ème Régiment de Ligne,,Infantry,
+Regiment,3ème Régiment de Ligne,,Infantry,
+Division,2ème Division d'Infanterie,Général de Division Donzelot,Infantry,4ème Régiment de Ligne;5ème Régiment de Ligne;6ème Régiment de Ligne
+Regiment,4ème Régiment de Ligne,,Infantry,
+Regiment,5ème Régiment de Ligne,,Infantry,
+Regiment,6ème Régiment de Ligne,,Infantry,
+Division,3ème Division d'Infanterie,Général de Division Marcognet,Infantry,7ème Régiment de Ligne;8ème Régiment de Ligne;9ème Régiment de Ligne
+Regiment,7ème Régiment de Ligne,,Infantry,
+Regiment,8ème Régiment de Ligne,,Infantry,
+Regiment,9ème Régiment de Ligne,,Infantry,
+Division,4ème Division d'Infanterie,Général de Division Durutte,Infantry,10ème Régiment de Ligne;11ème Régiment de Ligne;12ème Régiment de Ligne
+Regiment,10ème Régiment de Ligne,,Infantry,
+Regiment,11ème Régiment de Ligne,,Infantry,
+Regiment,12ème Régiment de Ligne,,Infantry,
+Corps,2ème Corps d'Infanterie,Général Honoré Reille,Infantry,5ème Division d'Infanterie;6ème Division d'Infanterie;7ème Division d'Infanterie
+Division,5ème Division d'Infanterie,Général de Division Bachelu,Infantry,13ème Régiment de Ligne;14ème Régiment de Ligne;15ème Régiment de Ligne
+Regiment,13ème Régiment de Ligne,,Infantry,
+Regiment,14ème Régiment de Ligne,,Infantry,
+Regiment,15ème Régiment de Ligne,,Infantry,
+Division,6ème Division d'Infanterie,Général de Division Jérôme Bonaparte,Infantry,16ème Régiment de Ligne;17ème Régiment de Ligne;18ème Régiment de Ligne
+Regiment,16ème Régiment de Ligne,,Infantry,
+Regiment,17ème Régiment de Ligne,,Infantry,
+Regiment,18ème Régiment de Ligne,,Infantry,
+Division,7ème Division d'Infanterie,Général de Division Foy,Infantry,19ème Régiment de Ligne;20ème Régiment de Ligne;21ème Régiment de Ligne
+Regiment,19ème Régiment de Ligne,,Infantry,
+Regiment,20ème Régiment de Ligne,,Infantry,
+Regiment,21ème Régiment de Ligne,,Infantry,
+Corps,3ème Corps de Cavalerie,Général Kellermann,Cavalry,1ère Division de Cuirassiers;2ème Division de Cuirassiers
+Division,1ère Division de Cuirassiers,Général Lhéritier,Cavalry,1er Régiment de Cuirassiers;2ème Régiment de Cuirassiers
+Regiment,1er Régiment de Cuirassiers,,Cavalry,
+Regiment,2ème Régiment de Cuirassiers,,Cavalry,
+Division,2ème Division de Cuirassiers,Général Delort,Cavalry,3ème Régiment de Cuirassiers;4ème Régiment de Cuirassiers
+Regiment,3ème Régiment de Cuirassiers,,Cavalry,
+Regiment,4ème Régiment de Cuirassiers,,Cavalry,
+Corps,Vieille Garde,Général de Division Friant,Infantry,1er Régiment de Grenadiers à Pied;2ème Régiment de Grenadiers à Pied
+Regiment,1er Régiment de Grenadiers à Pied,,Infantry,
+Regiment,2ème Régiment de Grenadiers à Pied,,Infantry,
+Corps,Jeune Garde,Général de Division Duhesme,Infantry,1er Régiment de Voltigeurs;2ème Régiment de Voltigeurs
+Regiment,1er Régiment de Voltigeurs,,Infantry,
+Regiment,2ème Régiment de Voltigeurs,,Infantry,
